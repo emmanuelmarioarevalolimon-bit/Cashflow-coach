@@ -1,0 +1,24 @@
+C1 TESORERIA 6.0 — PAGINA WEB INTEGRADA
+
+Desde PowerShell, en la carpeta que contiene iniciar.py:
+
+python .\iniciar.py --configure
+python .\iniciar.py
+
+El primer comando abre .env en Bloc de notas. Configura SQL Server y pega tu clave
+privada solo en AI_API_KEY=. No compartas ese archivo. No se pide pegar claves en
+un campo oculto de la terminal.
+
+Para probar explícitamente con SQLite en lugar de SQL Server, en una instalación
+NUEVA sin .env: python .\iniciar.py --demo-local
+Ese modo NO cambia una configuración existente ni migra datos.
+
+Al abrir: crea una cuenta -> Predicción avanzada -> Cargar ejemplo sintético ->
+Calcular y guardar. No necesitas Gemini para ejecutar el cálculo.
+Configura Gemini para el chat y el informe. Confirma propuestas antes de recalcular.
+
+No necesitas motor-predictivo-api ni un segundo servidor en 8787. Usa el puerto
+que indique el iniciador y conserva PowerShell abierto. Ctrl+C detiene el servidor.
+
+No es un portal bancario oficial, no mueve dinero ni está listo para publicación.
+README.md incluye configuración, límites y pruebas.

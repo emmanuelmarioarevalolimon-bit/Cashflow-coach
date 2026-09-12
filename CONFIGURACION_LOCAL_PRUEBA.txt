@@ -1,0 +1,9 @@
+# SOLO pruebas locales. SQLite NO es SQL Server. No se migran datos automáticamente.
+DB_BACKEND=sqlite
+AI_API_URL=https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
+AI_API_KEY=
+AI_MODEL=gemini-3.8-flash
+AI_TIMEOUT_SECONDS=60
+COOKIE_SECURE=0
+ALLOW_REGISTRATION=1
+C1_PUBLIC_MODE=0

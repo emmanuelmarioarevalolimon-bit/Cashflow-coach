@@ -1,0 +1,24 @@
+# CONFIGURACION DEL SERVIDOR. Nunca enviar este archivo ni subir .env a GitHub.
+# SQL Server es el motor predeterminado. No se cambia automáticamente a SQLite.
+DB_BACKEND=mssql
+DB_SERVER=localhost\SQLEXPRESS
+DB_DATABASE=C1Tesoreria
+DB_DRIVER=ODBC Driver 18 for SQL Server
+# windows usa la identidad que ejecuta PowerShell. sql usa DB_USER y DB_PASSWORD.
+DB_AUTH=windows
+DB_USER=
+DB_PASSWORD=
+# La conexión siempre solicita Encrypt=yes.
+# yes SOLO para una instancia local de desarrollo con certificado autofirmado.
+# Fuera de desarrollo: no y certificado verificable configurado correctamente.
+DB_TRUST_SERVER_CERTIFICATE=no
+
+AI_API_URL=https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
+AI_API_KEY=
+AI_MODEL=gemini-3.8-flash
+AI_TIMEOUT_SECONDS=60
+
+# Piloto en localhost. No habilitar publicación sin revisión de seguridad.
+C1_PUBLIC_MODE=0
+COOKIE_SECURE=0
+ALLOW_REGISTRATION=1
