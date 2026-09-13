@@ -23,6 +23,9 @@
   const SVG_NS = "http://www.w3.org/2000/svg";
   const STORAGE_KEY = "c1-sidebar-collapsed";
   const toggleButton = document.getElementById("toggleSidebarButton");
+  const menuButton = document.querySelector(".mobile-menu-button");
+  const MOBILE_BREAKPOINT = 920;
+  const isMobileViewport = () => window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches;
 
   const setSidebarState = (collapsed) => {
     document.body.classList.toggle("sidebar-hidden", collapsed);
@@ -40,7 +43,46 @@
   const restoreSidebar = () => {
     const collapsed = localStorage.getItem(STORAGE_KEY) === "1";
     setSidebarState(collapsed);
+    if (isMobileViewport()) {
+      document.body.classList.remove("sidebar-open");
+      setMenuButtonState(false);
+      return;
+    }
+    setMenuButtonState(!collapsed);
   };
+
+  const setMenuButtonState = (open) => {
+    if (!menuButton) return;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Cerrar navegación" : "Abrir navegación");
+  };
+
+  const toggleSidebar = () => {
+    const mobile = isMobileViewport();
+    if (mobile) {
+      const nextOpen = !document.body.classList.contains("sidebar-open");
+      document.body.classList.toggle("sidebar-open", nextOpen);
+      setMenuButtonState(nextOpen);
+      if (nextOpen) {
+        document.body.classList.remove("sidebar-hidden");
+      }
+    } else {
+      const collapsed = !document.body.classList.contains("sidebar-hidden");
+      setSidebarState(collapsed);
+      setMenuButtonState(!collapsed);
+    }
+  };
+
+  window.addEventListener("resize", () => {
+    if (isMobileViewport()) {
+      if (!document.body.classList.contains("sidebar-open")) {
+        setMenuButtonState(false);
+      }
+      return;
+    }
+    document.body.classList.remove("sidebar-open");
+    setMenuButtonState(!document.body.classList.contains("sidebar-hidden"));
+  });
 
   document.addEventListener("DOMContentLoaded", init);
 
@@ -83,9 +125,8 @@
       c1Logout();
     });
 
-    const menuButton = document.querySelector(".mobile-menu-button");
     if (menuButton) {
-      menuButton.addEventListener("click", () => document.body.classList.toggle("sidebar-open"));
+      menuButton.addEventListener("click", toggleSidebar);
     }
 
     document.addEventListener("click", (event) => {
@@ -95,6 +136,7 @@
         !event.target.closest(".mobile-menu-button")
       ) {
         document.body.classList.remove("sidebar-open");
+        setMenuButtonState(false);
       }
     });
 
