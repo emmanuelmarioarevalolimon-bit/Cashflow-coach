@@ -64,6 +64,8 @@ Pega una clave privada nueva exclusivamente después de `AI_API_KEY=` en el Bloc
 
 La aplicación usa el endpoint de compatibilidad de **Google**; el segmento `/openai/` no implica enviar la petición a OpenAI. El modelo se puede cambiar en `.env`. La disponibilidad, cuota y permisos de tu cuenta se comprueban con **Probar Gemini**, no leyendo la configuración. Esa prueba consume cuota.
 
+Si esa vía devuelve HTTP 502, 503 o 504, el chat y los análisis estructurados hacen un único intento de recuperación por `generateContent`, la API nativa de Google, con el mismo modelo, instrucciones y datos. Ambos intentos cuentan en los límites locales y comparten el tiempo máximo configurado. No se reintentan errores de clave, permisos o cuota ni se generan respuestas locales. Si las dos vías fallan, se muestra el error. La prueba de conexión puede consumir hasta cuatro llamadas si también necesita corregir una propuesta.
+
 El chat muestra Markdown y fórmulas LaTeX de forma segura. `assistant_instructions.txt` contiene el estilo académico editable y se vuelve a leer en cada consulta. Para crear la clave, probar instrucciones de sistema en Google AI Studio y llevar el estilo elegido a la aplicación, sigue [docs/CONFIGURAR_GEMINI_Y_ESTILO_ACADEMICO.md](docs/CONFIGURAR_GEMINI_Y_ESTILO_ACADEMICO.md).
 
 No se incluye un formulario web para guardar secretos ni se utiliza la clave en el navegador. Los informes, el chat y la extracción documental llaman al backend autenticado.

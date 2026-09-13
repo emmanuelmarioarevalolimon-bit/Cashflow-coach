@@ -7,6 +7,7 @@ import json
 import re
 import unicodedata
 import socket
+from time import monotonic, sleep
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, build_opener, HTTPRedirectHandler
@@ -22,6 +23,71 @@ class _NoRedirect(HTTPRedirectHandler):
 def urlopen(request, timeout):
     # Never forward the Authorization header to a redirected host.
     return build_opener(_NoRedirect).open(request, timeout=timeout)
+
+
+def _native_gemini_request(config: AIConfig, body: dict[str, Any]) -> Request:
+    """Keep the same model, instructions, history and JSON schema on Google's native API."""
+    generation = {
+        'maxOutputTokens': body['max_tokens'],
+        'responseMimeType': 'application/json',
+        'responseJsonSchema': body['response_format']['json_schema']['schema'],
+    }
+    if config.model.startswith('gemini-3'):
+        generation['thinkingConfig'] = {'thinkingLevel': 'LOW'}
+    contents = []
+    instructions = []
+    for message in body['messages']:
+        if message['role'] == 'system':
+            instructions.append({'text': message['content']})
+        else:
+            contents.append({
+                'role': 'model' if message['role'] == 'assistant' else 'user',
+                'parts': [{'text': message['content']}],
+            })
+    native = {'contents': contents, 'generationConfig': generation}
+    if instructions:
+        native['systemInstruction'] = {'parts': instructions}
+    return Request(
+        f'https://generativelanguage.googleapis.com/v1beta/models/{config.model}:generateContent',
+        data=json.dumps(native, ensure_ascii=False).encode('utf-8'), method='POST',
+        headers={'x-goog-api-key': config.api_key, 'Content-Type': 'application/json', 'Accept': 'application/json'},
+    )
+
+
+def _request_gemini_json(config: AIConfig, body: dict[str, Any], *, reserve_call=None) -> dict[str, Any]:
+    """One native recovery for a transient compatibility failure, within the same time budget.
+
+    Both attempts count against the local quota. Auth/quota errors, redirects and
+    invalid responses are never retried. There is no model switch or local answer.
+    """
+    if not _is_gemini(config) or not re.fullmatch(r'gemini-[a-zA-Z0-9_.-]+', config.model):
+        raise RuntimeError('Endpoint o modelo de Gemini inválido.')
+    if reserve_call is None:
+        from .limits import reserve_provider_call
+        reserve_call = reserve_provider_call
+    deadline = monotonic() + config.timeout_seconds
+    request = Request(
+        config.api_url, data=json.dumps(body, ensure_ascii=False).encode('utf-8'), method='POST',
+        headers={'Authorization': f'Bearer {config.api_key}', 'Content-Type': 'application/json', 'Accept': 'application/json'},
+    )
+    for attempt in range(2):
+        reserve_call()
+        remaining = deadline - monotonic()
+        if remaining <= 0:
+            raise TimeoutError()
+        try:
+            with urlopen(request, timeout=remaining) as response:
+                raw = response.read(1_000_001)
+                if len(raw) > 1_000_000:
+                    raise RuntimeError('El proveedor devolvió una respuesta demasiado grande.')
+                return json.loads(raw.decode('utf-8'))
+        except HTTPError as exc:
+            if attempt or exc.code not in {502, 503, 504} or deadline - monotonic() < 6:
+                raise
+            exc.close()
+            sleep(1)
+            request = _native_gemini_request(config, body)
+    raise RuntimeError('No se pudo completar la consulta de Gemini.')
 
 def _compact_context(payload: AssistantRequest) -> dict[str, Any]:
     analysis_input = payload.analysis_input.model_dump(by_alias=True, mode="json")
@@ -251,24 +317,8 @@ def _provider_request(
     else:
         body["temperature"] = 0.2
 
-    request = Request(
-        config.api_url,
-        data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
-        method="POST",
-        headers={
-            "Authorization": f"Bearer {config.api_key}",
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        },
-    )
     try:
-        from .limits import reserve_provider_call
-        reserve_provider_call()
-        with urlopen(request, timeout=config.timeout_seconds) as response:
-            raw = response.read(1_000_001)
-            if len(raw) > 1_000_000:
-                raise RuntimeError("El proveedor devolvió una respuesta demasiado grande.")
-            response_data = json.loads(raw.decode("utf-8"))
+        response_data = _request_gemini_json(config, body)
     except HTTPError as exc:
         raise RuntimeError(_http_error_message(exc)) from None
     except URLError:
@@ -294,6 +344,21 @@ def _provider_request(
 def _extract_provider_text(data: Any) -> str:
     if not isinstance(data, dict):
         raise RuntimeError("El formato de respuesta del proveedor no es compatible.")
+    candidates = data.get('candidates')
+    if isinstance(candidates, list) and candidates and isinstance(candidates[0], dict):
+        candidate = candidates[0]
+        if candidate.get('finishReason') == 'MAX_TOKENS':
+            raise RuntimeError('La respuesta de la IA se cortó por el límite de salida. No se aplicó ningún cambio.')
+        if candidate.get('finishReason') != 'STOP':
+            raise RuntimeError('Gemini no completó una respuesta utilizable. No se aplicó ningún cambio.')
+        content = candidate.get('content', {})
+        parts = content.get('parts', []) if isinstance(content, dict) else []
+        if isinstance(parts, list):
+            text = ''.join(part['text'] for part in parts if isinstance(part, dict)
+                           and not part.get('thought') and isinstance(part.get('text'), str))
+            if text.strip():
+                return text
+        raise RuntimeError('Gemini no devolvió texto utilizable. No se aplicó ningún cambio.')
     choices = data.get("choices")
     if isinstance(choices, list) and choices and isinstance(choices[0], dict):
         if choices[0].get("finish_reason") == "length":
@@ -576,9 +641,10 @@ def _validate_provider_updates(payload: AssistantRequest, raw: dict[str, Any]) -
     return validated
 
 def _validated_provider_request(config: AIConfig, payload: AssistantRequest) -> tuple[str, dict[str, Any]]:
-    """Hasta dos llamadas: la segunda solo si el JSON de cambios no superó validación.
+    """Hasta dos generaciones: la segunda solo si el JSON de cambios no superó validación.
 
-    No repite errores HTTP/cuota y no convierte el respaldo local en éxito de Gemini.
+    El transporte puede recuperar cada generación por la API nativa tras un 502/503/504.
+    No repite errores de autenticación/cuota ni sustituye a Gemini con respuestas locales.
     """
     correction: str | None = None
     for attempt in range(2):
@@ -720,7 +786,7 @@ def _check_cli() -> int:
     if sys.argv[1:] != ['--check']:
         print('Uso: python -m app.ai_service --check')
         return 2
-    print(f'C1 Tesorería {VERSION}. Prueba real: hasta 2 llamadas a Gemini, consume cuota.')
+    print(f'C1 Tesorería {VERSION}. Prueba real: hasta 4 llamadas incluyendo recuperación de conexión, consume cuota.')
     try:
         result = check_connection()
     except AssistantFailure as exc:

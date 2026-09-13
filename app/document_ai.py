@@ -59,17 +59,12 @@ def request_json(system: str, context: dict, schema: dict):
         raise ai.AssistantFailure('Endpoint o modelo de Gemini inválido.',code='configuration_error',status=503)
     if not REQUEST_SLOT.acquire(blocking=False):raise ai.AssistantFailure('Hay dos consultas en curso. Espera.',code='busy',status=429)
     try:
-        reserve_provider_call()
         body={'model':config.model,'messages':[{'role':'system','content':system},
               {'role':'user','content':json.dumps(context,ensure_ascii=False,default=str)}],
               'max_tokens':12288,'reasoning_effort':'low',
               'response_format':{'type':'json_schema','json_schema':{'name':'financial_document','schema':schema}}}
-        request=Request(config.api_url,data=json.dumps(body,ensure_ascii=False).encode(),method='POST',
-                        headers={'Authorization':'Bearer '+config.api_key,'Content-Type':'application/json','Accept':'application/json'})
-        with ai.urlopen(request,timeout=config.timeout_seconds) as response:
-            raw=response.read(1_000_001)
-            if len(raw)>1_000_000:raise RuntimeError('Respuesta de Gemini demasiado grande.')
-        text=ai._extract_provider_text(json.loads(raw.decode()))
+        response=ai._request_gemini_json(config,body,reserve_call=reserve_provider_call)
+        text=ai._extract_provider_text(response)
         value=ai._parse_json_response(text)
         # No guardar ni reflejar secretos si aparecen accidentalmente en la respuesta.
         value=json.loads(json.dumps(value,ensure_ascii=False).replace(config.api_key,'[CLAVE OCULTA]'))
