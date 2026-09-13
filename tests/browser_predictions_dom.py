@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 from playwright.sync_api import sync_playwright,expect
 from app import config,db,ai_service as ai,document_ai,security
 from app.main import app
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'pruebas'
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(os.getenv('C1_TEST_ARTIFACTS', str(ROOT/'.test-artifacts')));OUT.mkdir(parents=True,exist_ok=True)
 checks=[];errors=[]
 with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
     config.ENV_FILE=Path(temp)/'missing.env'
@@ -18,7 +18,7 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
     db.get_engine.cache_clear();security.attempts.clear()
     def fake(system,context,schema):
         if 'question' in context:
-            if context['question']=='fuerza error':raise ai.AssistantFailure('ERROR SIMULADO: el proveedor no respondió.',code='provider_failure',status=502)
+            if context['question']=='fuerza error de flujo de caja':raise ai.AssistantFailure('ERROR SIMULADO: el proveedor no respondió.',code='provider_failure',status=502)
             return {'answer':'**RESPUESTA SIMULADA PARA PRUEBAS**: el déficit es \\(D = U-L\\). <img src=x onerror="window.markdownXss=true"> Confirma para calcular.',
                  'proposal':{'horizonDays':None,'threshold':None,'eventId':'factura-principal','delayDays':7}},'gemini-simulado-qa'
         return {'title':'Informe de prueba · Gemini simulado','summary':'La narrativa es simulada; los cálculos son reales de Python.',
@@ -41,7 +41,7 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
             content=re.sub(r'<link[^>]*>','',content)
             def load_page():
                 page.set_content(content)
-                for name in ('workspace.css','predictions.css'):page.add_style_tag(content=(ROOT/'app/static/css'/name).read_text())
+                for name in ('workspace.css','predictions.css','ui.css'):page.add_style_tag(content=(ROOT/'app/static/css'/name).read_text())
                 page.add_style_tag(content=(ROOT/'app/static/vendor/katex/katex.min.css').read_text())
                 page.evaluate('''window.fetch=async(url,opt={})=>{const r=await window.__api(String(url),{...opt,headers:Object.fromEntries(new Headers(opt.headers||{}).entries())});return new Response(r.body,{status:r.status});};''')
                 session=(ROOT/'app/static/js/session.js').read_text().replace("localStorage.removeItem('c1_demo_session');location.assign('/');",'window.__loggedOut=true;')
@@ -82,7 +82,7 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
             assert json.loads(page.locator('#inputJson').input_value())['scenario_actions'][0]['days']==7
             expect(page.locator('#savedRuns [data-run]')).to_have_count(2)
             checks.append('Confirmación, recálculo REAL, nueva versión y gráfica actualizada: OK')
-            page.locator('#chatMessage').fill('fuerza error');page.locator('#chatForm button').click();expect(page.locator('#error')).to_contain_text('ERROR SIMULADO')
+            page.locator('#chatMessage').fill('fuerza error de flujo de caja');page.locator('#chatForm button').click();expect(page.locator('#error')).to_contain_text('ERROR SIMULADO')
             checks.append('Fallo de Gemini SIMULADO visible sin fallback: OK')
             page.locator('#reportConsent').check();page.locator('#reportBtn').click();expect(page.locator('#reportOutput')).to_contain_text('Gemini simulado')
             r=client.get(page.locator('#reportOutput a').get_attribute('href'));assert 'Predicción estadística' in r.text

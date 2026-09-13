@@ -7,7 +7,8 @@
   <meta name="description" content="Planificador de flujo de caja treasury prototype">
   <title>C1 Tesorería 6.0 — Planificador de flujo de caja</title>
   <link rel="stylesheet" href="/static/vendor/katex/katex.min.css?v=0.16.22">
-  <link rel="stylesheet" href="/static/css/styles.css?v=5">
+  <link rel="stylesheet" href="/static/css/styles.css?v=7">
+<link rel="stylesheet" href="/static/css/ui.css?v=1">
 </head>
 <body class="app-page">
   <div class="app-shell">
@@ -29,7 +30,7 @@
     <main class="main-area">
       <header class="topbar treasury-topbar">
         <button class="mobile-menu-button" type="button" aria-label="Encoger menú" aria-controls="app-sidebar" aria-expanded="true">☰</button>
-        <div>
+        <div class="topbar-title">
           <a class="back-link" href="/dashboard">← Volver al resumen</a>
           <h1>Planificador de flujo de caja</h1>
           <p class="topbar-subtitle">Proyecta, somete a estrés y corrige tu plan de liquidez de 30 días.</p>
@@ -40,7 +41,8 @@
           <button id="loadDemoButton" class="secondary-button" type="button">Restablecer demostración</button>
           <button id="exportButton" class="secondary-button" type="button" disabled>Exportar análisis</button>
         </div>
-      </header><div style="margin:12px 20px;padding:12px;background:#eef4fe;border:1px solid #d2dff4;border-radius:8px"><a href="/workspace" style="font-weight:700">Documentos, historial e informes de mi empresa →</a> <span style="margin-left:14px">Versión 6.0.0-web-integrada · los saldos del panel demo son sintéticos</span></div>
+      </header>
+      <div class="workspace-shortcut"><a href="/workspace">Documentos e informes de mi empresa →</a><span>Organiza tus datos y conserva tus análisis.</span></div>
 
       <section class="content-container treasury-content">
         <div class="prototype-banner" role="note">

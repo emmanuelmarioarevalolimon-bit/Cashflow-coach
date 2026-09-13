@@ -18,7 +18,7 @@ with tempfile.TemporaryDirectory() as tmp:
   fake=config.AIConfig(config.DEFAULT_URL,'NOT_A_REAL_KEY_QA_ONLY','gemini-prueba-simulada',60)
   config.get_ai_config=lambda:fake;ai.get_ai_config=lambda:fake
   def provider(conf,payload,correction=None):
-    if 'fuerza error' in payload.message:raise RuntimeError('HTTP 429. Error SIMULADO de cuota.')
+    if 'fuerza error de flujo de caja' in payload.message:raise RuntimeError('HTTP 429. Error SIMULADO de cuota.')
     event=next(x for x in payload.analysis_input.events if x.direction=='inflow')
     days=14 if 'dos semanas' in payload.message else 7
     return (f'**SIMULADO PARA PRUEBAS**: propongo \\(d = {days}\\) días para {event.counterparty}. <img src=x onerror="window.markdownXss=true">',{'stressEnabled':True,'stressEventId':event.id,'stressDelayDays':days})
@@ -60,6 +60,44 @@ with tempfile.TemporaryDirectory() as tmp:
           page.add_script_tag(content=js)
         if name=='treasury':page.evaluate("document.dispatchEvent(new Event('DOMContentLoaded'))")
         return page
+      # Responsive regression: use the actual page styles and menu handlers.
+      for screen in ('index', 'dashboard', 'treasury', 'workspace', 'predictions', 'calendar'):
+        layout = render(screen)
+        for width in (1440, 1024, 768, 390, 320):
+          layout.set_viewport_size({'width': width, 'height': 1000})
+          if not layout.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'):
+            layout.screenshot(path=str(OUT / f'overflow-{screen}-{width}.png'), full_page=True)
+            overflowing = layout.evaluate('''() => [...document.querySelectorAll('main *')].filter(e => {
+              if (e.getBoundingClientRect().right <= innerWidth + 1) return false;
+              for (let parent = e.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+                if (['auto', 'hidden', 'scroll', 'clip'].includes(getComputedStyle(parent).overflowX)) return false;
+              }
+              return true;
+            }).slice(0, 15).map(e => ({tag: e.tagName, id: e.id, class: e.className, right: e.getBoundingClientRect().right}))''')
+            raise AssertionError(f'{screen}: overflow at {width}px: {overflowing}')
+          if screen == 'dashboard':
+            title = layout.locator('.topbar h1').bounding_box()
+            menu = layout.locator('.mobile-menu-button').bounding_box()
+            assert 0 <= title['x'] - menu['x'] - menu['width'] <= 24, 'Welcome must stay next to the menu'
+          if screen == 'treasury':
+            expect(layout.locator('#importButton')).to_be_visible()
+            expect(layout.locator('#exportButton')).to_be_visible()
+          if width in (1440, 390):
+            layout.screenshot(path=str(OUT / f'ui-{screen}-{width}.png'), animations='disabled')
+        if screen in ('dashboard', 'treasury'):
+          layout.set_viewport_size({'width': 1440, 'height': 1000})
+          before = layout.locator('.main-area').bounding_box()['width']
+          layout.locator('.mobile-menu-button').click()
+          expect(layout.locator('body')).to_have_class(re.compile('sidebar-hidden'))
+          layout.wait_for_function('document.querySelector(".sidebar").getBoundingClientRect().width < 80')
+          assert layout.locator('.main-area').bounding_box()['width'] > before + 150
+          layout.set_viewport_size({'width': 390, 'height': 844})
+          layout.locator('.mobile-menu-button').click()
+          expect(layout.locator('body')).to_have_class(re.compile('sidebar-open'))
+          layout.locator('.main-area').click(position={'x': 350, 'y': 200}, force=True)
+          expect(layout.locator('body')).not_to_have_class(re.compile('sidebar-open'))
+        layout.close()
+      results.append('Seis pantallas a 320–1440 px sin desborde; bienvenida alineada, acciones móviles y menú compacto: OK')
       page=render('workspace');expect(page.locator('#companyTitle')).to_contain_text('Empresa de prueba');expect(page.locator('#dbStatus')).to_contain_text('SQLite')
       results.append('Render del espacio de empresa y estado honesto de base de datos: OK')
       page.locator('#fileInput').set_input_files(ROOT/'examples/movimientos-ejemplo.csv');page.locator('#uploadBtn').click();expect(page.locator('#documentDetail')).to_contain_text('Movimientos propuestos (4)');expect(page.locator('#entryCount')).to_have_text('0')
@@ -79,7 +117,7 @@ with tempfile.TemporaryDirectory() as tmp:
       expect(treasury.locator('#assistantMessages .rich-message strong')).to_have_text('SIMULADO PARA PRUEBAS');expect(treasury.locator('#assistantMessages .katex')).to_have_count(1);expect(treasury.locator('#assistantMessages img')).to_have_count(0);assert treasury.evaluate('window.markdownXss') is None
       treasury.locator('#applyAiChangesButton').click();expect(treasury.locator('#stressDelayDays')).to_have_value('7')
       results.append('Copiloto simulado interpreta, Python calcula y solo confirma al pulsar aplicar: OK')
-      treasury.locator('#assistantInput').fill('fuerza error');treasury.locator('#assistantSendButton').click();expect(treasury.locator('#assistantWarning')).to_contain_text('SIMULADO')
+      treasury.locator('#assistantInput').fill('fuerza error de flujo de caja');treasury.locator('#assistantSendButton').click();expect(treasury.locator('#assistantWarning')).to_contain_text('SIMULADO')
       results.append('Error del proveedor visible sin respuesta ficticia de respaldo: OK')
       treasury.locator('#savePlanButton').click();expect(treasury.locator('#savePlanStatus')).to_contain_text('Análisis guardado')
       results.append('Guardar análisis crea nueva versión: OK')

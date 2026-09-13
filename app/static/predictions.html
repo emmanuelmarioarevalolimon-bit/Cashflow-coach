@@ -6,14 +6,15 @@
   <meta name="description" content="Predicción de caja y análisis de compra de mercancía">
   <title>C1 Tesorería · Predicción y compras</title>
   <link rel="stylesheet" href="/static/vendor/katex/katex.min.css?v=0.16.22">
-  <link rel="stylesheet" href="/static/css/workspace.css">
-  <link rel="stylesheet" href="/static/css/predictions.css?v=4">
+  <link rel="stylesheet" href="/static/css/workspace.css?v=7">
+  <link rel="stylesheet" href="/static/css/predictions.css?v=7">
   <script src="/static/js/session.js" defer></script>
   <script src="/static/vendor/marked/marked.umd.js?v=16.4.1" defer></script>
   <script src="/static/vendor/dompurify/purify.min.js?v=3.2.6" defer></script>
   <script src="/static/vendor/katex/katex.min.js?v=0.16.22" defer></script>
   <script src="/static/js/rich-text.js?v=1" defer></script>
   <script src="/static/js/predictions.js?v=6" defer></script>
+<link rel="stylesheet" href="/static/css/ui.css?v=1">
 </head>
 <body>
   <header class="topbar prediction-topbar">
@@ -30,9 +31,9 @@
   <main class="container prediction-container">
     <div class="prediction-hero">
       <div>
-        <p class="eyebrow">CENTRO DE DECISIONES · MOTOR PYTHON</p>
-        <h1>Predice tu flujo de caja y compáralo con tus compras</h1>
-        <p class="muted">El sistema calcula primero la caja sin compra y vuelve a calcularla con los pagos de los productos propuestos.</p>
+        <p class="eyebrow">PLANIFICA CON TUS DATOS</p>
+        <h1>Tu flujo de caja. Tus próximas compras.</h1>
+        <p class="muted">Proyecta tu saldo y compara cómo cambia al comprar los productos que necesitas.</p>
         <p id="identity" class="muted"></p>
       </div>
       <div class="status"><span id="dbStatus" class="pill">Base de datos…</span><span id="aiStatus" class="pill">Gemini…</span><button id="checkGemini" class="secondary">Probar Gemini</button></div>

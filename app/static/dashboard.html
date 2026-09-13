@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Panel empresarial C1 SuperPro">
   <title>C1 Tesorería 6.0 — Panel empresarial</title>
-  <link rel="stylesheet" href="/static/css/styles.css?v=5">
+  <link rel="stylesheet" href="/static/css/styles.css?v=7">
+<link rel="stylesheet" href="/static/css/ui.css?v=1">
 </head>
 <body class="app-page">
   <div class="app-shell">
@@ -35,14 +36,19 @@
     <main class="main-area">
       <header class="topbar">
         <button class="mobile-menu-button" type="button" aria-label="Encoger menú" aria-controls="app-sidebar" aria-expanded="true">☰</button>
-        <h1>Bienvenido de nuevo</h1>
+        <div class="topbar-title">
+          <p class="eyebrow">Tu espacio financiero</p>
+          <h1>Bienvenido de nuevo</h1>
+          <p class="topbar-subtitle">Tu caja, tus compras y tus próximos pasos, en un solo lugar.</p>
+        </div>
         <button id="toggleSidebarButton" class="secondary-button" type="button" aria-controls="app-sidebar" aria-expanded="true" hidden>Ocultar apartados</button>
-      </header><div style="margin:12px 20px;padding:12px;background:#eef4fe;border:1px solid #d2dff4;border-radius:8px"><a href="/workspace" style="font-weight:700">Documentos, historial e informes de mi empresa →</a> <span style="margin-left:14px">Versión 6.0.0-web-integrada · los saldos del panel demo son sintéticos</span></div>
+      </header>
+      <div class="workspace-shortcut"><a href="/workspace">Documentos e informes de mi empresa →</a><span>Vista de demostración · saldos de ejemplo</span></div>
 
       <section class="content-container dashboard-content">
         <div class="prototype-banner" role="note">
-          <strong>Prototipo de hackathon</strong>
-          <span>Documentos e historial y el Planificador están disponibles. Todos los datos de las cuentas son sintéticos.</span>
+          <strong>Datos de ejemplo</strong>
+          <span>Explora el panel con datos sintéticos. Para trabajar con tu empresa, abre Documentos e historial.</span>
         </div>
 
         <section aria-labelledby="overview-title">
@@ -82,8 +88,8 @@
 
         <section class="planner-promo" aria-labelledby="planner-title">
           <div class="planner-promo-copy">
-            <span class="feature-label">Nuevo · Inteligencia de tesorería</span>
-            <h2 id="planner-title">Convierte tus próximos 30 días en un plan de caja, compra y calendario.</h2>
+            <span class="feature-label">Planifica tu siguiente paso</span>
+            <h2 id="planner-title">Más claridad para decidir qué comprar y cuándo.</h2>
             <p>
               Proyecta la liquidez, decide qué mercancía cabe en tu presupuesto conservador
               y ubica cobros, pagos, órdenes y entregas en una sola agenda.
