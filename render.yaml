@@ -31,6 +31,6 @@ services:
 
 databases:
   - name: compria-db
-    plan: 0.5c-1g
+    plan: free
     region: oregon
     postgresMajorVersion: "18"
