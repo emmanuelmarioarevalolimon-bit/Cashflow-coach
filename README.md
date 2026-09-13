@@ -80,11 +80,12 @@ No se incluye un formulario web para guardar secretos ni se utiliza la clave en 
 2. En **Documentos e historial**, sube CSV, XLSX, PDF con texto, DOCX o TXT. La carga conserva y extrae el archivo localmente; no envía nada a Google ni confirma movimientos por sí sola.
 3. Autoriza Gemini si necesitas interpretar el documento. El modo analista clasifica también contratos, políticas, inventarios y otros archivos con valor financiero indirecto; Python calcula caja, estadística descriptiva, concentración y escenarios. Si proporcionas juntos saldo inicial y umbral, ejecuta Monte Carlo y presenta probabilidades condicionadas a los supuestos. Puedes declarar una probabilidad común de cobro solo para esa simulación; Gemini no la estima ni se guarda como hecho confirmado. Revisa las propuestas y sus fuentes; confirma los datos para incorporarlos al historial. Las ventas y utilidades no se suman como caja.
 4. Opcionalmente activa **contexto externo vigente**. Gemini usa Google Search para consultar fuentes públicas y entrega enlaces citables; por privacidad, esa búsqueda recibe solo la moneda y un foco genérico, nunca el texto, los nombres o los montos del documento. Puede consumir cuota adicional y un fallo de búsqueda se muestra sin invalidar los cálculos locales.
-5. Abre **Predicción avanzada**. El botón **Ejecutar ejemplo completo** carga y calcula datos sintéticos sin una clave de IA. El ejemplo mantiene fechas fijas de marzo a septiembre de 2026; no se importa al libro de tu empresa.
+5. Abre **Predicciones** y elige la predicción normal o la beta avanzada Monte Carlo. En la avanzada, **Ejecutar ejemplo completo** carga y calcula datos sintéticos sin una clave de IA. El ejemplo mantiene fechas fijas de marzo a septiembre de 2026; no se importa al libro de tu empresa.
 6. Para datos propios, indica comienzo del historial, fecha de pronóstico, saldo y umbral; pulsa **Tomar historial confirmado de mi empresa**. Revisa la agenda propuesta y confirma cobertura completa. Los días sin filas no se consideran automáticamente cero.
 7. Selecciona horizonte, simulaciones y modelo; pulsa **Calcular y guardar predicción**. Python genera curvas, probabilidades, recurrencias y comparación de acciones, y guarda una nueva versión en la base.
-8. En el copiloto de esa predicción, autoriza el envío del resumen a Google. Pregunta sobre resultados o solicita un horizonte, umbral o retraso de cobro. Gemini propone; **Confirmar y recalcular con Python** crea una nueva versión y actualiza la gráfica. No altera el historial original.
-9. Genera un informe con autorización separada. La narrativa usa Gemini; las tablas numéricas del HTML se obtienen del resultado guardado. El informe queda en el historial de informes. Puedes imprimirlo a PDF desde el navegador.
+8. En **Simulador de decisiones**, prueba adelantar una compra o pago, posponer un egreso, o adelantar/retrasar un cobro. Python recalcula una curva comparativa y métricas antes/después sin modificar la versión base; **Confirmar y guardar** crea una versión nueva.
+9. En el copiloto de esa predicción, autoriza el envío del resumen a Google. Pregunta sobre resultados o solicita un horizonte, umbral o retraso de cobro. Gemini propone; **Confirmar y recalcular con Python** crea una nueva versión y actualiza la gráfica. No altera el historial original.
+10. Genera un informe con autorización separada. La narrativa usa Gemini; las tablas numéricas del HTML se obtienen del resultado guardado. El informe queda en el historial de informes. Puedes imprimirlo a PDF desde el navegador.
 
 ### Revisión de la agenda y acciones
 
@@ -96,7 +97,7 @@ El chat admite explícitamente explicación de resultados, horizonte, umbral y r
 
 ### Compra de mercancía y calendario financiero
 
-Después de abrir o calcular una predicción, el panel **Compra de mercancía** permite capturar hasta 30 artículos. Python calcula posición de inventario, punto de reorden, objetivo de cobertura, pedido mínimo y múltiplo de compra. Las necesidades se priorizan por riesgo de desabasto y margen declarado.
+El apartado independiente **Compras** permite seleccionar una predicción avanzada guardada y capturar hasta 30 artículos. Python calcula posición de inventario, punto de reorden, objetivo de cobertura, pedido mínimo y múltiplo de compra. Las necesidades se priorizan por riesgo de desabasto y margen declarado.
 
 La pantalla explica expresamente que compara la predicción del flujo de caja sin compra contra el flujo recalculado con los pagos de compra. Al analizar, cada producto se crea o actualiza en el catálogo privado de la empresa con nombre, SKU, proveedor e hipótesis operativas. El usuario puede registrar por fecha las unidades solicitadas que faltaron. Un estimador local y auditable pondera más los faltantes recientes, calcula ajuste y fluctuación sobre la demanda base, y utiliza el extremo conservador para la siguiente recomendación. No usa Gemini para inventar demanda.
 
@@ -116,7 +117,7 @@ Límites del módulo web: 1500 movimientos históricos, hasta dos años de cober
 
 La etiqueta de procedencia de un análisis refleja el origen declarado de una entrada editable; **no certifica que el JSON sea idéntico al documento**. Las predicciones se guardan como snapshots con entradas y resultados. Los informes no recalculan las predicciones estadísticas al redactarse: conservan el ID y la fecha de la versión fuente.
 
-La extracción documental conserva los límites del piloto anterior: 10 MB; PDF con texto (no escaneado ni imágenes de gráficos), DOCX/TXT y tablas CSV/XLSX. Los archivos originales se guardan en la base. No se ejecutan macros ni fórmulas. La interpretación de documentos puede perder estructura y necesita revisión humana. El puntaje de suficiencia es una heurística de cobertura, no confianza del modelo. Las probabilidades del documento requieren saldo y umbral, y asumen cobros independientes con las confianzas editables declaradas; para series históricas, estacionalidad y simulaciones avanzadas utiliza **Predicción avanzada**.
+La extracción documental conserva los límites del piloto anterior: 10 MB; PDF con texto (no escaneado ni imágenes de gráficos), DOCX/TXT y tablas CSV/XLSX. Los archivos originales se guardan en la base. No se ejecutan macros ni fórmulas. La interpretación de documentos puede perder estructura y necesita revisión humana. El puntaje de suficiencia es una heurística de cobertura, no confianza del modelo. Las probabilidades del documento requieren saldo y umbral, y asumen cobros independientes con las confianzas editables declaradas; para series históricas, estacionalidad y simulaciones avanzadas utiliza **Predicciones → Beta avanzada Monte Carlo**.
 
 ## Almacenamiento y compatibilidad
 
@@ -129,7 +130,9 @@ Para reutilizar tu base del piloto, respáldala primero, usa una carpeta nueva p
 - `app/engine/predictive_engine.py`: copia del motor avanzado entregado anteriormente.
 - `app/engine/demand_engine.py`: estimación ponderada y fluctuación de demanda no atendida por día laborable.
 - `app/predictions.py`: validación, puente a la base, ejecución, snapshots, propuestas Gemini, confirmación e informes.
-- `app/static/predictions.html`, `css/predictions.css`, `js/predictions.js`: interfaz nueva conectada a las rutas del mismo servidor.
+- `app/static/predictions.html` y `js/predictions.js`: apartado de predicciones con acceso a la versión normal y a la beta avanzada Monte Carlo.
+- `app/static/purchases.html` y `js/purchases.js`: apartado independiente para catálogo y compras contra una predicción guardada.
+- `app/static/css/predictions.css`: estilos compartidos por predicciones y compras.
 - `app/main.py`: registro de la página y API, autenticación y protecciones existentes.
 - `app/document_ai.py`: extracción e informes, transportador Gemini compartido.
 - `app/document_analysis.py`: cálculos auditables del modo analista documental, escenarios y Monte Carlo condicionado.

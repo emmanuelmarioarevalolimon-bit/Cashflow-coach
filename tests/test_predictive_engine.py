@@ -346,6 +346,13 @@ def test_conflicting_actions_are_rejected():
     with pytest.raises(m.InputError): m.apply_liquidity_actions([e],[a,b],cfg())
 
 
+def test_advance_expense_moves_purchase_or_payment_earlier():
+    original=event(id="purchase",direction="outflow",offset=7)
+    action=m.LiquidityAction("buy-earlier","advance_expense",target_event_id="purchase",days=3)
+    moved=m.apply_liquidity_actions([original],[action],cfg())
+    assert moved[0].expected_date==START+timedelta(days=4)
+
+
 def test_incompatible_groups_are_rejected():
     with pytest.raises(m.InputError): m.apply_liquidity_actions([],[credit(id="a",exclusive_group="one"),credit(id="b",exclusive_group="one")],cfg())
 

@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Predicción de caja y análisis de compra de mercancía">
+  <meta name="description" content="Predicción normal y avanzada de flujo de caja">
   <title>COMPRIA</title>
   <link rel="stylesheet" href="/static/vendor/katex/katex.min.css?v=0.16.22">
   <link rel="stylesheet" href="/static/css/workspace.css?v=7">
-  <link rel="stylesheet" href="/static/css/predictions.css?v=7">
+  <link rel="stylesheet" href="/static/css/predictions.css?v=9">
   <script src="/static/js/session.js" defer></script>
   <script src="/static/vendor/marked/marked.umd.js?v=16.4.1" defer></script>
   <script src="/static/vendor/dompurify/purify.min.js?v=3.2.6" defer></script>
   <script src="/static/vendor/katex/katex.min.js?v=0.16.22" defer></script>
   <script src="/static/js/rich-text.js?v=1" defer></script>
-  <script src="/static/js/predictions.js?v=6" defer></script>
+  <script src="/static/js/predictions.js?v=8" defer></script>
 <link rel="stylesheet" href="/static/css/ui.css?v=5">
 </head>
 <body>
@@ -21,9 +21,10 @@
     <a class="brand" href="/dashboard">COMPRIA</a>
     <nav aria-label="Navegación principal">
       <a href="/workspace">Documentos</a>
-      <a class="current" href="/predictions" aria-current="page">Predicción y compras</a>
+      <a class="current" href="/predictions" aria-current="page">Predicciones</a>
+      <a href="/purchases">Compras</a>
       <a href="/calendar">Calendario</a>
-      <a href="/treasury">Planificador manual</a>
+      <a href="/treasury">Predicción normal</a>
     </nav>
     <button id="logout" class="push secondary">Cerrar sesión</button>
   </header>
@@ -31,21 +32,25 @@
   <main class="container prediction-container">
     <div class="prediction-hero">
       <div>
-        <p class="eyebrow">PLANIFICA CON TUS DATOS</p>
-        <h1>Tu flujo de caja. Tus próximas compras.</h1>
-        <p class="muted">Proyecta tu saldo y compara cómo cambia al comprar los productos que necesitas.</p>
+        <p class="eyebrow">BETA · VERSIÓN AVANZADA DE PRUEBA</p>
+        <h1>Predicciones de flujo de caja</h1>
+        <p class="muted">Elige entre la predicción normal para planes directos y la avanzada Monte Carlo para explorar incertidumbre y riesgo.</p>
         <p id="identity" class="muted"></p>
       </div>
       <div class="status"><span id="dbStatus" class="pill">Base de datos…</span><span id="aiStatus" class="pill">Gemini…</span><button id="checkGemini" class="secondary">Probar Gemini</button></div>
     </div>
 
-    <div class="workflow-strip" aria-label="Flujo recomendado">
+    <section class="prediction-mode-grid" aria-label="Tipos de predicción">
+      <article class="panel prediction-mode-card"><span class="pill">NORMAL</span><h2>Predicción de flujo normal</h2><p>Proyecta un plan definido con saldo inicial, cobros y pagos esperados. Incluye escenario de retraso y saldo conservador, con reglas simples y auditables.</p><a class="button secondary" href="/treasury">Abrir predicción normal</a></article>
+      <article class="panel prediction-mode-card active"><span class="pill">BETA AVANZADA</span><h2>Predicción Monte Carlo</h2><p>Genera muchas trayectorias posibles a partir del historial para estimar rangos, probabilidades de riesgo y escenarios. No garantiza resultados futuros.</p><a class="button" href="#setup">Usar predicción avanzada</a></article>
+    </section>
+
+    <div class="workflow-strip prediction-workflow" aria-label="Flujo de la predicción avanzada">
       <a href="#setup"><span>1</span><strong>Prepara</strong><small>Elige datos y horizonte</small></a>
       <a href="#results"><span>2</span><strong>Proyecta</strong><small>Revisa caja y riesgo</small></a>
-      <a href="#purchasePlanner"><span>3</span><strong>Decide compras</strong><small>Valida inventario y fechas</small></a>
     </div>
 
-    <div class="notice compact-notice warning"><strong>Entorno de análisis:</strong> no mueve dinero ni conecta cuentas bancarias. Los resultados dependen de datos y supuestos revisados por el usuario.</div>
+    <div class="notice compact-notice warning"><strong>Beta avanzada de prueba:</strong> Monte Carlo genera escenarios posibles para apoyar la planeación; no adivina el futuro ni garantiza saldos, cobros o solvencia. La precisión predictiva global todavía no está validada y cambia según la calidad del historial y los supuestos. La pantalla reporta el error de simulación y, cuando existe, el error de validación temporal.</div>
     <p id="error" class="error" role="alert" hidden></p><p id="progress" class="success" role="status" aria-live="polite"></p>
 
     <div class="prediction-layout">
@@ -77,7 +82,8 @@
 
         <div id="results" hidden>
           <section class="panel result-panel">
-            <div class="header"><div><p class="eyebrow">02 / CAJA PROYECTADA</p><h2 id="resultTitle">Predicción</h2><p id="resultMeta" class="muted"></p><span id="sourceLabel" class="pill"></span></div><a id="downloadJson" class="button secondary">Descargar JSON</a></div>
+            <div class="header"><div><p class="eyebrow">02 / CAJA PROYECTADA · BETA</p><h2 id="resultTitle">Predicción</h2><p id="resultMeta" class="muted"></p><span id="sourceLabel" class="pill"></span></div><a id="downloadJson" class="button secondary">Descargar JSON</a></div>
+            <div id="accuracyNote" class="notice compact-notice warning"><strong>Precisión:</strong> se calculará al ejecutar el modelo.</div>
             <div class="kpis pred-kpis"><div class="kpi featured-kpi"><span>Saldo final mediano</span><strong id="terminal">—</strong><small id="terminalRange"></small></div><div class="kpi"><span>Riesgo en algún día</span><strong id="anyDay">—</strong><small>Al menos un cierre bajo la reserva</small></div><div class="kpi"><span>Riesgo al final</span><strong id="terminalRisk">—</strong><small>Último día del horizonte</small></div></div>
             <div id="forecastChart" class="forecast-chart" role="img" aria-label="Proyección diaria y cuantiles"></div><div class="legend"><span class="legend-base">Base · mediana</span><span class="legend-scenario">Escenario · mediana</span><span class="legend-fixed">Con recomendación · mediana</span><span>Reserva · línea discontinua</span></div><p id="bandNote" class="muted"></p>
             <details><summary>Ver tabla diaria</summary><div id="dailyTable"></div></details>
@@ -85,48 +91,20 @@
 
           <section class="panel action-panel"><p class="eyebrow">03 / ACCIONES DE LIQUIDEZ</p><h2>Opciones evaluadas por Python</h2><p id="recommendation"></p><div id="recommendationValues"></div><div id="outsideObligations"></div><details><summary>Comparar alternativas</summary><div id="alternatives"></div></details><details><summary>VaR, ES, runway y buffer</summary><div id="riskDetails"></div></details></section>
 
-          <section id="purchasePlanner" class="panel purchase-panel">
-            <div class="purchase-heading"><div><p class="eyebrow">04 / COMPRA DE MERCANCÍA</p><h2>Compra lo necesario sin perder visibilidad de caja</h2><p class="muted">El algoritmo cruza inventario y demanda con la banda conservadora de esta predicción.</p></div><button id="purchaseDemo" class="secondary">Probar compra de ejemplo</button></div>
-            <div class="cash-comparison-note"><strong>Qué se está prediciendo</strong><span>Esta es una predicción del flujo de caja comparada con las compras: muestra la caja prevista sin comprar y la vuelve a calcular incluyendo los pagos de los productos recomendados.</span></div>
-            <section class="catalog-card" aria-labelledby="catalogTitle">
-              <div class="catalog-heading"><div><p class="eyebrow">CATÁLOGO PERSISTENTE</p><h3 id="catalogTitle">Productos y demanda no atendida</h3><p>Los productos que analizas se guardan en la base de datos del sitio. Reporta cuántas unidades faltaron para ajustar la estimación futura.</p></div><span class="catalog-badge">Por empresa</span></div>
-              <div id="catalogList" class="catalog-list"><p class="muted">Cargando catálogo…</p></div>
-              <form id="stockoutForm" class="stockout-form">
-                <label>Producto<select id="stockoutProduct" required><option value="">Selecciona un producto</option></select></label>
-                <label>Fecha del faltante<input id="stockoutDate" type="date" required></label>
-                <label>Unidades que faltaron<input id="stockoutUnits" type="number" min="0.001" step="0.001" required></label>
-                <label>Comentario<input id="stockoutNote" maxlength="500" placeholder="Ej. tres clientes lo solicitaron"></label>
-                <button type="submit">Registrar faltante</button>
-              </form>
-              <details id="workSchedule" class="work-schedule">
-                <summary>Configurar días de trabajo y cierres</summary>
-                <form id="workScheduleForm">
-                  <fieldset><legend>Días con venta esperada</legend><div class="weekday-checks"><label><input type="checkbox" data-workday value="0"> Lun</label><label><input type="checkbox" data-workday value="1"> Mar</label><label><input type="checkbox" data-workday value="2"> Mié</label><label><input type="checkbox" data-workday value="3"> Jue</label><label><input type="checkbox" data-workday value="4"> Vie</label><label><input type="checkbox" data-workday value="5"> Sáb</label><label><input type="checkbox" data-workday value="6"> Dom</label></div></fieldset>
-                  <label>Fechas adicionales sin operación<textarea id="nonWorkingDates" rows="3" placeholder="2026-12-25 | Navidad&#10;2027-01-01 | Año Nuevo"></textarea><small>Una fecha por línea. Puedes agregar una descripción después de |.</small></label>
-                  <button type="submit" class="secondary">Guardar calendario laboral</button>
-                </form>
-              </details>
-              <p id="catalogMessage" class="input-notice" role="status" aria-live="polite">Los faltantes recientes reciben más peso; la estimación muestra un rango de fluctuación.</p>
-            </section>
-            <div class="purchase-policy"><label>Fecha de la orden<input id="purchaseOrderDate" type="date"></label><label>Días de cobertura<input id="purchaseCoverage" type="number" min="1" max="365" value="30"></label><label>Presupuesto máximo<input id="purchaseBudget" type="number" min="0" step="0.01" value="50000"></label><label>Reserva adicional<input id="purchaseReserve" type="number" min="0" step="0.01" value="0"></label></div>
-            <div class="item-list-head"><div><strong>Productos por analizar</strong><small>Al analizar, estos productos se guardan o actualizan en el catálogo de la empresa.</small></div><button id="addPurchaseItem" class="secondary" type="button">+ Agregar producto</button></div>
-            <div id="purchaseItems" class="purchase-items"></div>
-            <button id="purchasePreviewBtn" class="wide" type="button">Analizar compra contra el cash flow</button>
-            <div id="purchaseResult" class="purchase-result" hidden>
-              <div id="purchaseKpis" class="purchase-kpis"></div>
-              <div id="purchaseProducts" class="purchase-products" aria-live="polite"></div>
-              <div id="purchaseImpact" class="purchase-impact"></div>
-              <div id="purchaseTable"></div>
-              <div class="confirmation-action"><div><strong>¿Quieres conservar este escenario?</strong><small>Se crea una versión nueva; no se emite ninguna orden ni se modifica el historial.</small></div><button id="confirmPurchase" type="button">Confirmar y guardar escenario</button></div>
-              <div id="purchaseWarnings" class="muted"></div>
-            </div>
+          <section class="panel decision-panel" aria-labelledby="decisionTitle">
+            <p class="eyebrow">04 / SIMULADOR DE DECISIONES</p><h2 id="decisionTitle">Mira cómo cambia la curva antes de decidir</h2><p class="muted">Prueba una fecha distinta para un cobro, pago o compra. La vista previa no modifica la versión guardada.</p>
+            <div class="decision-form"><label>Decisión<select id="decisionType"><option value="advance_expense">Adelantar una compra o pago</option><option value="defer_payable">Posponer un pago a proveedor</option><option value="delay_expense">Retrasar otro egreso</option><option value="accelerate_receivable">Adelantar un cobro</option><option value="delay_receivable">Retrasar un cobro</option></select></label><label>Movimiento<select id="decisionEvent"></select></label><label>Días<input id="decisionDays" type="number" min="1" max="365" value="7"></label><button id="previewDecision" type="button">Comparar curvas</button></div>
+            <p id="decisionHint" class="input-notice">Selecciona una decisión y un movimiento de la predicción.</p>
+            <div id="decisionResult" hidden><div id="decisionChart" class="forecast-chart decision-chart" role="img" aria-label="Comparación de la curva actual y la curva con la decisión"></div><div class="legend"><span class="legend-base">Curva actual</span><span class="legend-fixed">Con decisión</span><span>Reserva · línea discontinua</span></div><div id="decisionMetrics"></div><div class="decision-actions"><button id="applyDecision" type="button">Confirmar y guardar nueva versión</button><button id="discardDecision" class="secondary" type="button">Descartar vista previa</button></div></div>
           </section>
 
-          <section class="panel calendar-cta"><div><p class="eyebrow">05 / CALENDARIO CONECTADO</p><h2>Ve cuándo ordenar, recibir y pagar</h2><p>Combina esta predicción con los cobros, pagos y movimientos confirmados de la empresa.</p></div><a id="calendarLink" class="button" href="/calendar">Abrir calendario financiero</a></section>
+          <section class="panel purchase-cta"><div><p class="eyebrow">05 / MÓDULO INDEPENDIENTE</p><h2>¿Quieres evaluar una compra?</h2><p>Abre Compras y selecciona esta u otra predicción guardada como base financiera.</p></div><a id="purchaseLink" class="button" href="/purchases">Abrir Compras</a></section>
 
-          <section class="panel copilot-panel"><div class="header"><div><p class="eyebrow">06 / COPILOTO GEMINI</p><h2>Pregunta sobre esta predicción</h2></div><span class="pill">Tú confirmas los cambios</span></div><p>Gemini recibe el resumen de esta versión, no tu clave ni el documento original. Python ejecuta los cálculos.</p><label class="consent-line"><input type="checkbox" id="googleConsent"> Autorizo enviar la pregunta y el resumen financiero de esta predicción a Google. Consume cuota.</label><div class="toolbar"><button class="secondary" data-prompt="¿Qué pasa si el Cliente principal paga una semana tarde?">Cliente con retraso</button><button class="secondary" data-prompt="Explica la diferencia entre riesgo al final y riesgo en algún día.">Entender el riesgo</button></div><div id="chatLog" aria-live="polite"></div><form id="chatForm"><label>Pregunta<textarea id="chatMessage" rows="3" maxlength="3000" placeholder="¿Qué pasa si mi cliente tarda una semana en pagar?" required></textarea></label><button type="submit">Consultar a Gemini</button></form><div id="proposalBox" class="notice" hidden><h3>Propuesta pendiente</h3><pre id="proposalText"></pre><button id="applyProposal">Confirmar y recalcular con Python</button><button id="cancelProposal" class="secondary">Descartar</button></div></section>
+          <section class="panel calendar-cta"><div><p class="eyebrow">06 / CALENDARIO CONECTADO</p><h2>Consulta el pronóstico en el calendario</h2><p>Combina esta predicción con cobros, pagos y movimientos confirmados.</p></div><a id="calendarLink" class="button" href="/calendar">Abrir calendario financiero</a></section>
 
-          <section class="panel audit-panel"><p class="eyebrow">07 / INFORME Y AUDITORÍA</p><h2>Explica y conserva el análisis</h2><label class="consent-line"><input id="reportConsent" type="checkbox"> Autorizo enviar el resumen de esta predicción y los totales históricos agregados a Google para redactar un informe.</label><button id="reportBtn">Generar informe con Gemini</button><div id="reportOutput"></div><details><summary>Recurrencias detectadas y modelo</summary><div id="recurrences"></div><pre id="diagnostics"></pre></details><details><summary>Supuestos y limitaciones</summary><div id="warnings"></div></details></section>
+          <section class="panel copilot-panel"><div class="header"><div><p class="eyebrow">07 / COPILOTO GEMINI</p><h2>Pregunta sobre esta predicción</h2></div><span class="pill">Tú confirmas los cambios</span></div><p>Gemini recibe el resumen de esta versión, no tu clave ni el documento original. Python ejecuta los cálculos.</p><label class="consent-line"><input type="checkbox" id="googleConsent"> Autorizo enviar la pregunta y el resumen financiero de esta predicción a Google. Consume cuota.</label><div class="toolbar"><button class="secondary" data-prompt="¿Qué pasa si el Cliente principal paga una semana tarde?">Cliente con retraso</button><button class="secondary" data-prompt="Explica la diferencia entre riesgo al final y riesgo en algún día.">Entender el riesgo</button></div><div id="chatLog" aria-live="polite"></div><form id="chatForm"><label>Pregunta<textarea id="chatMessage" rows="3" maxlength="3000" placeholder="¿Qué pasa si mi cliente tarda una semana en pagar?" required></textarea></label><button type="submit">Consultar a Gemini</button></form><div id="proposalBox" class="notice" hidden><h3>Propuesta pendiente</h3><pre id="proposalText"></pre><button id="applyProposal">Confirmar y recalcular con Python</button><button id="cancelProposal" class="secondary">Descartar</button></div></section>
+
+          <section class="panel audit-panel"><p class="eyebrow">08 / INFORME Y AUDITORÍA</p><h2>Explica y conserva el análisis</h2><label class="consent-line"><input id="reportConsent" type="checkbox"> Autorizo enviar el resumen de esta predicción y los totales históricos agregados a Google para redactar un informe.</label><button id="reportBtn">Generar informe con Gemini</button><div id="reportOutput"></div><details><summary>Recurrencias detectadas y modelo</summary><div id="recurrences"></div><pre id="diagnostics"></pre></details><details><summary>Supuestos y limitaciones</summary><div id="warnings"></div></details></section>
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ InterventionType = Literal[
     "defer_payable",
     "draw_credit",
     "delay_expense",
+    "advance_expense",
 ]
 
 CENT = Decimal("0.01")
@@ -1448,7 +1449,7 @@ class LiquidityAction:
 
     def __post_init__(self) -> None:
         if not self.id: raise InputError("Acción sin identificador.")
-        allowed=("delay_receivable","accelerate_receivable","defer_payable","delay_expense","draw_credit")
+        allowed=("delay_receivable","accelerate_receivable","defer_payable","delay_expense","advance_expense","draw_credit")
         if self.type not in allowed: raise InputError("Tipo de acción desconocido.")
         _require_int(self.days,"action.days",0,3650)
         _require_int(self.operational_impact,"operational_impact",0,1000000)
@@ -1492,7 +1493,7 @@ def apply_liquidity_actions(events: Sequence[PlannedEvent], actions: Sequence[Li
             e=result[a.target_event_id]
             expected_direction="inflow" if a.type in ("delay_receivable","accelerate_receivable") else "outflow"
             if e.direction!=expected_direction: raise InputError("La dirección no corresponde al tipo de acción.")
-            offset=-a.days if a.type=="accelerate_receivable" else a.days
+            offset=-a.days if a.type in ("accelerate_receivable","advance_expense") else a.days
             at=e.expected_date+timedelta(days=offset)
             result[e.id]=replace(e,expected_date=at,risk_anchor=e.risk_anchor or e.expected_date)
         if at<config.start_date:

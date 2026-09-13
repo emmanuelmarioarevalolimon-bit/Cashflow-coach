@@ -192,6 +192,29 @@ def test_frontend_identifiers_match():
         assert not used-ids
 
 
+def test_workspace_exposes_monte_carlo_prediction_entrypoint():
+    static=Path(__file__).resolve().parents[1]/'app/static'
+    html=(static/'workspace.html').read_text(encoding='utf-8')
+    assert 'Predicciones de flujo de caja' in html
+    assert 'predicción desde historial con Monte Carlo' in html
+    assert 'NORMAL + BETA AVANZADA' in html
+    assert 'href="/predictions"' in html
+    predictions=(static/'predictions.html').read_text(encoding='utf-8')
+    script=(static/'js/predictions.js').read_text(encoding='utf-8')
+    purchases=(static/'purchases.html').read_text(encoding='utf-8')
+    assert 'La precisión predictiva global todavía no está validada' in predictions
+    assert 'Predicción de flujo normal' in predictions
+    assert 'Predicción Monte Carlo' in predictions
+    assert 'id="purchasePlanner"' not in predictions
+    assert 'id="purchasePlanner"' in purchases
+    assert 'id="accuracyNote"' in predictions
+    assert 'id="decisionChart"' in predictions
+    assert 'Adelantar una compra o pago' in predictions
+    assert 'monteCarloSE' in script
+    assert 'decisions/preview' in script and 'decisions/apply' in script
+    assert 'no garantizan que el saldo futuro quede dentro del rango' in script
+
+
 def test_chat_pages_load_local_markdown_and_latex_renderer():
     static=Path(__file__).resolve().parents[1]/'app/static'
     for page in ('treasury.html','predictions.html'):

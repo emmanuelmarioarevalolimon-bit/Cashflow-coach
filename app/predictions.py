@@ -59,6 +59,13 @@ class Apply(Model):
     name: str=Field(default='Escenario desde Gemini',min_length=1,max_length=160)
 
 
+class DecisionRequest(Model):
+    type: Literal['delay_receivable','accelerate_receivable','defer_payable','delay_expense','advance_expense']
+    eventId: str=Field(min_length=1,max_length=160)
+    days: int=Field(ge=1,le=365)
+    name: str=Field(default='Escenario de decisión',min_length=1,max_length=160)
+
+
 class PurchaseItem(Model):
     id: str=Field(min_length=1,max_length=80)
     name: str=Field(min_length=1,max_length=160)
@@ -352,6 +359,39 @@ def save_work_schedule(payload:WorkScheduleRequest,request:Request):
 @router.get('/{ident}')
 def get_prediction(ident:str,request:Request):
     with store.session() as db:return info(prediction(db,ident,request.state.user))
+
+
+def _decision_scenario(saved:dict[str,Any],payload:DecisionRequest,currency:str):
+    events={event['id']:event for event in saved['result'].get('events',[])}
+    event=events.get(payload.eventId)
+    if event is None:raise HTTPException(422,'El movimiento seleccionado no existe en esta predicción.')
+    inflow=payload.type in ('delay_receivable','accelerate_receivable')
+    if event.get('direction')!=('inflow' if inflow else 'outflow'):
+        raise HTTPException(422,'La decisión no corresponde al tipo de movimiento seleccionado.')
+    data=deepcopy(saved['input'])
+    previous=[action for action in data.get('scenario_actions',[]) if action.get('target_event_id')!=payload.eventId]
+    action={'id':'decision-'+store.uid(),'type':payload.type,'target_event_id':payload.eventId,'days':payload.days}
+    if len(previous)>=4:raise HTTPException(422,'La predicción ya contiene el máximo de cuatro decisiones de escenario.')
+    data['scenario_actions']=previous+[action]
+    return data,execute(data,currency),action
+
+
+@router.post('/{ident}/decisions/preview')
+def preview_decision(ident:str,payload:DecisionRequest,request:Request):
+    user=request.state.user
+    with store.session() as db:saved=info(prediction(db,ident,user))
+    data,result,action=_decision_scenario(saved,payload,actor_currency(user))
+    return {'baseId':ident,'decision':action,'result':result,
+            'notice':'Vista previa calculada. No se modificó ni guardó la predicción original.'}
+
+
+@router.post('/{ident}/decisions/apply')
+def apply_decision(ident:str,payload:DecisionRequest,request:Request):
+    user=request.state.user
+    with store.session() as db:saved=info(prediction(db,ident,user))
+    data,result,action=_decision_scenario(saved,payload,actor_currency(user))
+    return persist(user,payload.name,data,result,{'type':saved['sources'].get('type','manual'),
+        'operation':'confirmed_decision','parentPrediction':ident,'decision':action})
 
 
 @router.get('/{ident}/download')

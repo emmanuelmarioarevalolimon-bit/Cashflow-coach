@@ -36,10 +36,10 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
                 r=client.request(opt.get('method','GET'),url,content=opt.get('body'),headers=opt.get('headers') or {})
                 return {'body':r.text,'status':r.status_code}
             page.expose_function('__api',bridge)
-            content=(ROOT/'app/static/predictions.html').read_text()
-            content=re.sub(r'<script.*?</script>','',content,flags=re.S)
-            content=re.sub(r'<link[^>]*>','',content)
-            def load_page():
+            def load_page(name='predictions'):
+                content=(ROOT/f'app/static/{name}.html').read_text()
+                content=re.sub(r'<script.*?</script>','',content,flags=re.S)
+                content=re.sub(r'<link[^>]*>','',content)
                 page.set_content(content)
                 for name in ('workspace.css','predictions.css','ui.css'):page.add_style_tag(content=(ROOT/'app/static/css'/name).read_text())
                 page.add_style_tag(content=(ROOT/'app/static/vendor/katex/katex.min.css').read_text())
@@ -48,7 +48,7 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
                 page.add_script_tag(content=session)
                 for script in ('vendor/marked/marked.umd.js','vendor/dompurify/purify.min.js','vendor/katex/katex.min.js','js/rich-text.js'):
                     page.add_script_tag(content=(ROOT/'app/static'/script).read_text())
-                page.add_script_tag(content=(ROOT/'app/static/js/predictions.js').read_text())
+                page.add_script_tag(content=(ROOT/f'app/static/js/{name}.js').read_text())
             load_page();expect(page.locator('#dbStatus')).to_contain_text('SQLite')
             checks.append('HTML+CSS+JS reales con API TestClient autenticada y SQLite explícito: OK')
             page.locator('#demoBtn').click();expect(page.locator('#coverage')).to_be_checked()
@@ -57,15 +57,6 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
             assert page.locator('#terminal').inner_text() not in ('—','$NaN')
             assert not page.locator('#error').is_visible(),page.locator('#error').inner_text()
             checks.append('Ejemplo de un clic, cálculo REAL, persistencia y gráfica: OK')
-            page.locator('#purchaseDemo').click();expect(page.locator('#purchaseResult')).to_be_visible(timeout=60000)
-            expect(page.locator('#purchaseTable')).to_contain_text('Lámina de acero')
-            expect(page.locator('#purchaseProducts')).to_contain_text('ACERO-01')
-            expect(page.locator('#purchaseProducts')).to_contain_text('Proveedor de acero')
-            expect(page.locator('#catalogList')).to_contain_text('ACERO-01')
-            page.locator('#stockoutProduct').select_option(index=1);page.locator('#stockoutDate').fill('2026-09-11');page.locator('#stockoutUnits').fill('8');page.locator('#stockoutForm button').click()
-            expect(page.locator('#catalogMessage')).to_contain_text('Nueva demanda estimada')
-            expect(page.locator('#catalogList')).to_contain_text('1 reportes')
-            checks.append('Compra, catálogo persistente y estimación por faltantes: OK')
             href=page.locator('#downloadJson').get_attribute('href');r=client.get(href);assert r.status_code==200
             data=r.json();assert data['result']['horizon']['days']==30
             (OUT/'resultado-navegador.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
@@ -92,6 +83,11 @@ with tempfile.TemporaryDirectory(prefix='c1-dom-') as temp:
             load_page();expect(page.locator('#savedRuns [data-run]')).to_have_count(2);page.locator('#savedRuns [data-run]').first.click();expect(page.locator('#results')).to_be_visible()
             assert json.loads(page.locator('#inputJson').input_value())['scenario_actions'][0]['days']==7
             checks.append('Reconstrucción del DOM recupera versiones de la base: OK')
+            load_page('purchases');expect(page.locator('#predictionSummary')).to_be_visible()
+            page.locator('#purchaseDemo').click();expect(page.locator('#purchaseResult')).to_be_visible(timeout=60000)
+            expect(page.locator('#purchaseTable')).to_contain_text('Lámina de acero');expect(page.locator('#purchaseProducts')).to_contain_text('ACERO-01');expect(page.locator('#purchaseProducts')).to_contain_text('Proveedor de acero');expect(page.locator('#catalogList')).to_contain_text('ACERO-01')
+            page.locator('#stockoutProduct').select_option(index=1);page.locator('#stockoutDate').fill('2026-09-11');page.locator('#stockoutUnits').fill('8');page.locator('#stockoutForm button').click();expect(page.locator('#catalogMessage')).to_contain_text('Nueva demanda estimada');expect(page.locator('#catalogList')).to_contain_text('1 reportes')
+            checks.append('Compras separadas: selección de predicción, catálogo persistente y estimación por faltantes: OK')
             page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(OUT/'prediccion-movil.png'),full_page=True)
             assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth+1'),'Desborde móvil'
             checks.append('Sin desborde horizontal de página a 390px: OK')

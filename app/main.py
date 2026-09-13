@@ -83,7 +83,7 @@ async def guardrails(request:Request,call_next):
         try:actor=get_actor(request)
         except SQLAlchemyError:return JSONResponse({'detail':'Base de datos no disponible.'},status_code=503)
         if not actor:
-            if path in ('/workspace','/dashboard','/treasury','/predictions','/calendar'):return RedirectResponse('/')
+            if path in ('/workspace','/dashboard','/treasury','/predictions','/purchases','/calendar'):return RedirectResponse('/')
             return JSONResponse({'detail':'Inicia sesión en esta aplicación.'},status_code=401)
         request.state.user=actor
     response=await call_next(request)
@@ -119,6 +119,8 @@ def treasury_page():return FileResponse(STATIC_DIR/'treasury.html')
 def workspace_page():return FileResponse(STATIC_DIR/'workspace.html')
 @app.get('/predictions',include_in_schema=False)
 def predictions_page():return FileResponse(STATIC_DIR/'predictions.html')
+@app.get('/purchases',include_in_schema=False)
+def purchases_page():return FileResponse(STATIC_DIR/'purchases.html')
 @app.get('/calendar',include_in_schema=False)
 def calendar_page():return FileResponse(STATIC_DIR/'calendar.html')
 @app.get('/health')

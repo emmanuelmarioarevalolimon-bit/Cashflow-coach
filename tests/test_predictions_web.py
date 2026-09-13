@@ -48,6 +48,23 @@ def test_real_engine_saved_and_reopened(client):
     assert client.get('/api/plans/'+d['id']).status_code==422
 
 
+def test_decision_preview_changes_curve_without_saving_and_apply_versions(client):
+    data=demo_input(client);data['config']['simulations']=100
+    saved=run(client,data);before=len(client.get('/api/predictions').json()['items'])
+    decision={'type':'advance_expense','eventId':'renta-pendiente','days':2,'name':'Comprar antes'}
+    preview=client.post('/api/predictions/'+saved['id']+'/decisions/preview',json=decision)
+    assert preview.status_code==200,preview.text
+    data=preview.json()
+    assert data['decision']['type']=='advance_expense'
+    assert data['result']['scenario']['projection']!=saved['result']['scenario']['projection']
+    assert len(client.get('/api/predictions').json()['items'])==before
+    applied=client.post('/api/predictions/'+saved['id']+'/decisions/apply',json=decision)
+    assert applied.status_code==200,applied.text
+    assert applied.json()['name']=='Comprar antes'
+    assert applied.json()['input']['scenario_actions'][-1]['type']=='advance_expense'
+    assert len(client.get('/api/predictions').json()['items'])==before+1
+
+
 @pytest.mark.parametrize('field,value',[('history_complete',False),('simulations',True),('simulations',50000),('days',366),('model','arbitrary-code'),('max_actions','bad')])
 def test_invalid_configuration_not_saved(client,field,value):
     data=demo_input(client);data['config'][field]=value
@@ -73,7 +90,7 @@ def test_no_cross_company_access(client):
 
 def test_provider_missing_shows_error_not_fake_reply(client):
     d=run(client)
-    r=client.post('/api/predictions/'+d['id']+'/assistant',json={'message':'Hola','consentToGoogle':True})
+    r=client.post('/api/predictions/'+d['id']+'/assistant',json={'message':'Explica el riesgo de liquidez de esta predicción','consentToGoogle':True})
     assert r.status_code==503
     assert r.json()['mode']=='error' and r.json()['code']=='not_configured'
 
@@ -102,7 +119,7 @@ def test_gemini_proposes_and_confirmed_engine_recalculates(client,monkeypatch):
 def test_atomic_gemini_proposal(client,monkeypatch):
     d=run(client)
     monkeypatch.setattr(document_ai,'request_json',lambda *args:({'answer':'Son siete días','proposal':{'eventId':'factura-principal'}},'mock'))
-    r=client.post('/api/predictions/'+d['id']+'/assistant',json={'message':'una semana','consentToGoogle':True})
+    r=client.post('/api/predictions/'+d['id']+'/assistant',json={'message':'¿Qué pasa si Cliente principal paga una semana tarde?','consentToGoogle':True})
     assert r.status_code==422 and r.json()['mode']=='error'
     assert len(client.get('/api/predictions').json()['items'])==1
 
@@ -159,5 +176,12 @@ def test_page_links_version_and_no_secrets(client):
     r=client.get('/predictions')
     assert r.status_code==200 and r.headers['x-c1-version']==VERSION
     assert 'inputJson' in r.text and 'Gemini' in r.text
+    assert 'Predicción de flujo normal' in r.text and 'Predicción Monte Carlo' in r.text
+    assert 'id="purchasePlanner"' not in r.text
     assert 'AI_API_KEY=' not in r.text
-    for path in ['/workspace','/dashboard','/treasury']:assert '/predictions' in client.get(path).text
+    purchases=client.get('/purchases')
+    assert purchases.status_code==200 and purchases.headers['x-c1-version']==VERSION
+    assert 'id="purchasePlanner"' in purchases.text and 'id="predictionSelect"' in purchases.text
+    for path in ['/workspace','/dashboard','/treasury','/calendar']:
+        page=client.get(path).text
+        assert '/predictions' in page and '/purchases' in page

@@ -36,6 +36,8 @@ with tempfile.TemporaryDirectory() as tmp:
       return {'status':r.status_code,'text':r.text}
     r=client.post('/api/auth/register',json={'email':'browser@example.test','password':'Password-only-QA-123','company':'Empresa de prueba · datos sintéticos','currency':'MXN'});assert r.status_code==200
     results.append('Cuenta y sesión reales del prototipo vía TestClient: OK')
+    prediction_input=client.get('/api/predictions/demo-input').json()['input'];prediction_input['config']['simulations']=100
+    seeded_prediction=client.post('/api/predictions/analyze',json={'name':'Base para compras separadas','input':prediction_input,'source':'synthetic'});assert seeded_prediction.status_code==200
     with sync_playwright() as p:
       browser=p.chromium.launch(executable_path=os.getenv('C1_CHROMIUM') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
       def render(name,query=''):
@@ -61,7 +63,7 @@ with tempfile.TemporaryDirectory() as tmp:
         if name=='treasury':page.evaluate("document.dispatchEvent(new Event('DOMContentLoaded'))")
         return page
       # Responsive regression: use the actual page styles and menu handlers.
-      for screen in ('index', 'dashboard', 'treasury', 'workspace', 'predictions', 'calendar'):
+      for screen in ('index', 'dashboard', 'treasury', 'workspace', 'predictions', 'purchases', 'calendar'):
         layout = render(screen)
         for width in (1440, 1024, 768, 390, 320):
           layout.set_viewport_size({'width': width, 'height': 1000})
@@ -97,7 +99,11 @@ with tempfile.TemporaryDirectory() as tmp:
           layout.locator('.main-area').click(position={'x': 350, 'y': 200}, force=True)
           expect(layout.locator('body')).not_to_have_class(re.compile('sidebar-open'))
         layout.close()
-      results.append('Seis pantallas a 320–1440 px sin desborde; bienvenida alineada, acciones móviles y menú compacto: OK')
+      results.append('Siete pantallas a 320–1440 px sin desborde; bienvenida alineada, acciones móviles y menú compacto: OK')
+      purchases=render('purchases');expect(purchases.locator('#predictionSummary')).to_be_visible();expect(purchases.locator('#predictionName')).to_have_text('Base para compras separadas');purchases.locator('#purchaseDemo').click();expect(purchases.locator('#purchaseResult')).to_be_visible(timeout=60000);expect(purchases.locator('#purchaseProducts')).to_contain_text('ACERO-01');purchases.close()
+      results.append('Compras funciona como apartado independiente y toma una predicción guardada como base: OK')
+      decisions=render('predictions');decisions.locator('#savedRuns [data-run]').first.click();expect(decisions.locator('#results')).to_be_visible();decisions.locator('#decisionDays').fill('2');decisions.locator('#previewDecision').click();expect(decisions.locator('#decisionResult')).to_be_visible(timeout=60000);expect(decisions.locator('#decisionChart svg')).to_have_count(1);expect(decisions.locator('#decisionMetrics')).to_contain_text('Con decisión');decisions.locator('#applyDecision').click();expect(decisions.locator('#savedRuns [data-run]')).to_have_count(2,timeout=60000);decisions.close()
+      results.append('Decisión de adelantar un pago recalcula la curva comparativa y se guarda solo al confirmar: OK')
       page=render('workspace');expect(page.locator('#companyTitle')).to_contain_text('Empresa de prueba');expect(page.locator('#dbStatus')).to_contain_text('SQLite')
       results.append('Render del espacio de empresa y estado honesto de base de datos: OK')
       page.locator('#fileInput').set_input_files(ROOT/'examples/movimientos-ejemplo.csv');page.locator('#uploadBtn').click();expect(page.locator('#documentDetail')).to_contain_text('Movimientos propuestos (4)');expect(page.locator('#entryCount')).to_have_text('0')
