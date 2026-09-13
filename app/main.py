@@ -1,4 +1,5 @@
 from __future__ import annotations
+import asyncio
 from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
@@ -23,13 +24,33 @@ from .calendar_api import router as calendar_router
 STATIC_DIR=Path(__file__).resolve().parent/'static'
 INSTANCE=uuid.uuid4().hex[:10]
 
+async def initialize_database(attempts: int = 6) -> None:
+    """Wait briefly for a newly provisioned Render database to accept connections."""
+    for attempt in range(1, attempts + 1):
+        try:
+            init_db()
+            return
+        except SQLAlchemyError:
+            if attempt == attempts:
+                raise RuntimeError(
+                    'No se pudo conectar a PostgreSQL después de varios intentos. '
+                    'Confirma que DATABASE_URL esté enlazada a compria-db y que ambas '
+                    'instancias estén en la misma región.'
+                ) from None
+            await asyncio.sleep(min(attempt * 2, 10))
+        except RuntimeError as exc:
+            # These messages are authored by the application and contain no credentials.
+            raise RuntimeError(f'Configuración de base de datos inválida: {exc}') from None
+
 @asynccontextmanager
 async def lifespan(app):
+    await initialize_database()
     try:
-        init_db()
         bootstrap_initial_admin()
-    except Exception as exc:
-        raise RuntimeError('No se pudo inicializar SQL. Revisa instancia, permisos, ODBC y certificado. Ejecuta python -m app.db --init. No se usó otra base de datos.') from None
+    except RuntimeError as exc:
+        raise RuntimeError(f'No se pudo crear la cuenta inicial: {exc}') from None
+    except SQLAlchemyError:
+        raise RuntimeError('La base de datos dejó de estar disponible al crear la cuenta inicial.') from None
     yield
 
 app=FastAPI(title='COMPRIA',version=VERSION,lifespan=lifespan,
