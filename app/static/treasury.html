@@ -7,7 +7,7 @@
   <meta name="description" content="Planificador de flujo de caja treasury prototype">
   <title>C1 Tesorería 6.0 — Planificador de flujo de caja</title>
   <link rel="stylesheet" href="/static/vendor/katex/katex.min.css?v=0.16.22">
-  <link rel="stylesheet" href="/static/css/styles.css?v=4">
+  <link rel="stylesheet" href="/static/css/styles.css?v=5">
 </head>
 <body class="app-page">
   <div class="app-shell">
@@ -28,13 +28,13 @@
 
     <main class="main-area">
       <header class="topbar treasury-topbar">
-        <button class="mobile-menu-button" type="button" aria-label="Abrir navegación">☰</button>
+        <button class="mobile-menu-button" type="button" aria-label="Encoger menú" aria-controls="app-sidebar" aria-expanded="true">☰</button>
         <div>
           <a class="back-link" href="/dashboard">← Volver al resumen</a>
           <h1>Planificador de flujo de caja</h1>
           <p class="topbar-subtitle">Proyecta, somete a estrés y corrige tu plan de liquidez de 30 días.</p>
         </div>
-        <button id="toggleSidebarButton" class="secondary-button" type="button" aria-controls="app-sidebar" aria-expanded="true">Ocultar apartados</button>
+        <button id="toggleSidebarButton" class="secondary-button" type="button" aria-controls="app-sidebar" aria-expanded="true" hidden>Ocultar apartados</button>
         <div class="topbar-actions">
           <button id="importButton" class="secondary-button" type="button">Importar plan JSON</button><input id="importInput" type="file" accept=".json,application/json" hidden>
           <button id="loadDemoButton" class="secondary-button" type="button">Restablecer demostración</button>
@@ -311,6 +311,6 @@
   <script src="/static/vendor/dompurify/purify.min.js?v=3.2.6" defer></script>
   <script src="/static/vendor/katex/katex.min.js?v=0.16.22" defer></script>
   <script src="/static/js/rich-text.js?v=1" defer></script>
-  <script src="/static/js/treasury.js?v=4" defer></script>
+  <script src="/static/js/treasury.js?v=5" defer></script>
 </body>
 </html>

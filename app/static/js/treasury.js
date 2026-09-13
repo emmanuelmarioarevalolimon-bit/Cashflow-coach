@@ -54,7 +54,11 @@
   const setMenuButtonState = (open) => {
     if (!menuButton) return;
     menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute("aria-label", open ? "Cerrar navegación" : "Abrir navegación");
+    const label = isMobileViewport()
+      ? (open ? "Cerrar navegación" : "Abrir navegación")
+      : (open ? "Encoger menú" : "Expandir menú");
+    menuButton.setAttribute("aria-label", label);
+    menuButton.title = label;
   };
 
   const toggleSidebar = () => {
@@ -63,9 +67,6 @@
       const nextOpen = !document.body.classList.contains("sidebar-open");
       document.body.classList.toggle("sidebar-open", nextOpen);
       setMenuButtonState(nextOpen);
-      if (nextOpen) {
-        document.body.classList.remove("sidebar-hidden");
-      }
     } else {
       const collapsed = !document.body.classList.contains("sidebar-hidden");
       setSidebarState(collapsed);

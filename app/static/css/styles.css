@@ -31,6 +31,7 @@
   --radius: 14px;
   --radius-lg: 22px;
   --sidebar-width: 256px;
+  --sidebar-compact-width: 76px;
 }
 
 * { box-sizing: border-box; }
@@ -244,7 +245,12 @@ summary:focus-visible,
 
 /* App shell */
 .app-page { min-height: 100vh; background: var(--page); }
-.app-shell { min-height: 100vh; display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); }
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  transition: grid-template-columns 180ms ease;
+}
 .sidebar {
   position: sticky;
   top: 0;
@@ -256,6 +262,7 @@ summary:focus-visible,
   background: linear-gradient(180deg, var(--navy-950), var(--navy-900));
   color: #d8e4f4;
   box-shadow: 8px 0 28px rgba(7, 21, 47, 0.14);
+  transition: width 180ms ease, padding 180ms ease, transform 180ms ease;
 }
 .sidebar-brand { margin: 0.3rem 0.65rem 2.1rem; }
 .sidebar-label { margin: 0 0.75rem 0.7rem; color: #7894ba; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
@@ -295,22 +302,6 @@ summary:focus-visible,
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(12px);
 }
-.app-shell.sidebar-hidden {
-  grid-template-columns: 0 minmax(0, 1fr);
-}
-.sidebar-hidden .sidebar {
-  width: 0;
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  box-shadow: none;
-}
-.sidebar-hidden .sidebar-brand,
-.sidebar-hidden .sidebar-label,
-.sidebar-hidden .side-nav,
-.sidebar-hidden .sidebar-bottom {
-  display: none;
-}
 .sidebar-hidden .topbar h1,
 .sidebar-hidden .topbar p,
 .sidebar-hidden .topbar .topbar-subtitle {
@@ -320,7 +311,7 @@ summary:focus-visible,
 .topbar h1 { font-size: 1.7rem; }
 .topbar-subtitle { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem; }
 .mobile-menu-button {
-  display: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
@@ -336,6 +327,40 @@ summary:focus-visible,
   cursor: pointer;
 }
 .mobile-menu-button:hover { background: var(--blue-50); border-color: var(--blue-500); }
+
+@media (min-width: 921px) {
+  body.sidebar-hidden .app-shell {
+    grid-template-columns: var(--sidebar-compact-width) minmax(0, 1fr);
+  }
+  body.sidebar-hidden .sidebar {
+    width: var(--sidebar-compact-width);
+    min-width: var(--sidebar-compact-width);
+    padding-inline: 0.65rem;
+    overflow: hidden;
+  }
+  body.sidebar-hidden .sidebar-brand {
+    justify-content: center;
+    margin-inline: 0;
+  }
+  body.sidebar-hidden .brand-copy,
+  body.sidebar-hidden .sidebar-label,
+  body.sidebar-hidden .side-nav-item > span:not(.nav-icon) {
+    display: none;
+  }
+  body.sidebar-hidden .side-nav-item {
+    justify-content: center;
+    gap: 0;
+    padding-inline: 0;
+  }
+  body.sidebar-hidden .side-nav-item.active {
+    box-shadow: inset 3px 0 0 #5a9be6;
+  }
+  body.sidebar-hidden .nav-icon {
+    width: 28px;
+    flex-basis: 28px;
+    font-size: 1.2rem;
+  }
+}
 .content-container { width: min(100%, 1440px); margin: 0 auto; padding: clamp(1.25rem, 3vw, 3rem); }
 .dashboard-content, .treasury-content { display: grid; gap: 2.25rem; }
 .prototype-banner { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; border: 1px solid #f2c3c8; border-radius: 10px; background: #fff6f7; color: #7f1d25; font-size: 0.82rem; }
@@ -589,10 +614,9 @@ summary:focus-visible,
   .login-panel { min-height: 100vh; }
   .mobile-brand { display: inline-flex; }
   .app-shell { grid-template-columns: 1fr; }
-  .sidebar { position: fixed; left: 0; top: 0; width: var(--sidebar-width); transform: translateX(-105%); transition: transform 180ms ease; }
+  .sidebar { position: fixed; left: 0; top: 0; width: var(--sidebar-width); transform: translateX(-105%); }
   body.sidebar-open .sidebar { transform: translateX(0); }
   body.sidebar-open::after { content: ""; position: fixed; z-index: 30; inset: 0; background: rgba(7,21,47,0.45); }
-  .mobile-menu-button { display: inline-flex; }
   .topbar { padding-inline: 1.1rem; }
   .treasury-topbar { align-items: flex-start; }
   .treasury-topbar .topbar-actions { flex-direction: column; }
