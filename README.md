@@ -2,6 +2,8 @@
 
 Para desplegarla en Render con el dominio `compria.tech`, consulta [docs/DEPLOY_RENDER.md](docs/DEPLOY_RENDER.md).
 
+Para hospedarla sin costo desde esta laptop mediante Cloudflare Tunnel, consulta [docs/HOST_DESDE_LAPTOP.md](docs/HOST_DESDE_LAPTOP.md).
+
 **Versión:** `6.0.0-web-integrada`. Piloto local independiente, sin conexión a cuentas bancarias ni movimientos reales de dinero. Esta entrega integra los archivos de `c1-tesoreria-sqlserver` con el motor histórico de `motor-predictivo-completo`; no obliga a levantar la API separada en el puerto 8787.
 
 ## Abrir desde PowerShell

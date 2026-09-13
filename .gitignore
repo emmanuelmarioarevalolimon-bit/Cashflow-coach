@@ -8,6 +8,8 @@ __pycache__/
 *.log
 *.bak
 .test-artifacts/
+.tools/
+.cloudflare-tunnel-token
 
 *.db
 *.sqlite*
