@@ -10,7 +10,7 @@
 </head>
 <body class="app-page">
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Navegación principal">
+    <aside class="sidebar" id="app-sidebar" aria-label="Navegación principal">
       <a class="brand brand-on-dark sidebar-brand" href="/dashboard" aria-label="Inicio de C1 SuperPro">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-copy"><strong>C1</strong> SuperPro</span>
@@ -36,6 +36,7 @@
       <header class="topbar">
         <button class="mobile-menu-button" type="button" aria-label="Abrir navegación">☰</button>
         <h1>Bienvenido de nuevo</h1>
+        <button id="toggleSidebarButton" class="secondary-button" type="button" aria-controls="app-sidebar" aria-expanded="true">Ocultar apartados</button>
       </header><div style="margin:12px 20px;padding:12px;background:#eef4fe;border:1px solid #d2dff4;border-radius:8px"><a href="/workspace" style="font-weight:700">Documentos, historial e informes de mi empresa →</a> <span style="margin-left:14px">Versión 6.0.0-web-integrada · los saldos del panel demo son sintéticos</span></div>
 
       <section class="content-container dashboard-content">

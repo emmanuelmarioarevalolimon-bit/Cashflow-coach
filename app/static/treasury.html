@@ -11,7 +11,7 @@
 </head>
 <body class="app-page">
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Navegación principal">
+    <aside class="sidebar" id="app-sidebar" aria-label="Navegación principal">
       <a class="brand brand-on-dark sidebar-brand" href="/dashboard" aria-label="Inicio de C1 SuperPro">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-copy"><strong>C1</strong> SuperPro</span>
@@ -34,6 +34,7 @@
           <h1>Planificador de flujo de caja</h1>
           <p class="topbar-subtitle">Proyecta, somete a estrés y corrige tu plan de liquidez de 30 días.</p>
         </div>
+        <button id="toggleSidebarButton" class="secondary-button" type="button" aria-controls="app-sidebar" aria-expanded="true">Ocultar apartados</button>
         <div class="topbar-actions">
           <button id="importButton" class="secondary-button" type="button">Importar plan JSON</button><input id="importInput" type="file" accept=".json,application/json" hidden>
           <button id="loadDemoButton" class="secondary-button" type="button">Restablecer demostración</button>

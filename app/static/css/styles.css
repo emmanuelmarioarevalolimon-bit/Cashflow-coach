@@ -40,7 +40,8 @@ body {
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--ink);
   background: var(--page);
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.52;
   -webkit-font-smoothing: antialiased;
 }
 button, input, select { font: inherit; }
@@ -294,6 +295,27 @@ summary:focus-visible,
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(12px);
 }
+.app-shell.sidebar-hidden {
+  grid-template-columns: 0 minmax(0, 1fr);
+}
+.sidebar-hidden .sidebar {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+.sidebar-hidden .sidebar-brand,
+.sidebar-hidden .sidebar-label,
+.sidebar-hidden .side-nav,
+.sidebar-hidden .sidebar-bottom {
+  display: none;
+}
+.sidebar-hidden .topbar h1,
+.sidebar-hidden .topbar p,
+.sidebar-hidden .topbar .topbar-subtitle {
+  overflow-wrap: anywhere;
+}
 .topbar .eyebrow { margin-bottom: 0.25rem; }
 .topbar h1 { font-size: 1.7rem; }
 .topbar-subtitle { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem; }
@@ -531,6 +553,21 @@ summary:focus-visible,
 }
 
 @media (max-width: 920px) {
+  body.sidebar-hidden .app-shell {
+    grid-template-columns: 1fr;
+  }
+  body.sidebar-hidden .sidebar {
+    width: var(--sidebar-width);
+    min-width: initial;
+    padding: 1.35rem 1rem;
+    overflow: auto;
+  }
+  body.sidebar-hidden .sidebar-brand,
+  body.sidebar-hidden .sidebar-label,
+  body.sidebar-hidden .side-nav,
+  body.sidebar-hidden .sidebar-bottom {
+    display: initial;
+  }
   .login-layout { grid-template-columns: 1fr; }
   .login-hero { display: none; }
   .login-panel { min-height: 100vh; }

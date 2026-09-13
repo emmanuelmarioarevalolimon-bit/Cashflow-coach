@@ -21,10 +21,31 @@
 
   const byId = (id) => document.getElementById(id);
   const SVG_NS = "http://www.w3.org/2000/svg";
+  const STORAGE_KEY = "c1-sidebar-collapsed";
+  const toggleButton = document.getElementById("toggleSidebarButton");
+
+  const setSidebarState = (collapsed) => {
+    document.body.classList.toggle("sidebar-hidden", collapsed);
+    if (toggleButton) {
+      toggleButton.textContent = collapsed ? "Mostrar apartados" : "Ocultar apartados";
+      toggleButton.setAttribute("aria-expanded", String(!collapsed));
+    }
+    try {
+      localStorage.setItem(STORAGE_KEY, collapsed ? "1" : "0");
+    } catch {
+      // Guardado opcional.
+    }
+  };
+
+  const restoreSidebar = () => {
+    const collapsed = localStorage.getItem(STORAGE_KEY) === "1";
+    setSidebarState(collapsed);
+  };
 
   document.addEventListener("DOMContentLoaded", init);
 
   async function init() {
+    restoreSidebar();
     bindGlobalControls();
     await loadAiStatus();
     const me = await fetch('/api/auth/me');
@@ -76,6 +97,13 @@
         document.body.classList.remove("sidebar-open");
       }
     });
+
+    if (toggleButton) {
+      toggleButton.addEventListener("click", () => {
+        const collapsed = !document.body.classList.contains("sidebar-hidden");
+        setSidebarState(collapsed);
+      });
+    }
 
     byId("loadDemoButton").addEventListener("click", () => loadDemo(true));
     byId("addEventButton").addEventListener("click", addBlankEvent);
