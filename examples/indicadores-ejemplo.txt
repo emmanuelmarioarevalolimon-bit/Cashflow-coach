@@ -1,0 +1,14 @@
+DOCUMENTO SINTETICO PARA DEMOSTRACION. NO REPRESENTA UNA EMPRESA REAL.
+
+Empresa: Ejemplo Industrial.
+Periodo del informe: 2026-08-01 a 2026-08-31.
+Moneda de presentación: MXN.
+
+Para el periodo 2026-08-01 a 2026-08-31, las ventas reconocidas fueron 120000.00 MXN.
+Para el periodo 2026-08-01 a 2026-08-31, la utilidad operativa declarada fue 18000.00 MXN.
+Para el periodo 2026-08-01 a 2026-08-31, el margen operativo declarado fue 15.00 por ciento.
+
+Estas cifras son indicadores contables declarados, no un estado bancario, no un saldo
+actual y no evidencia de cobros realizados. El documento no contiene movimientos
+individuales ni permite inferir fechas de cobro o de pago. Las métricas deben conservar
+su periodo, unidad y referencia al fragmento de origen, sin sumarse al historial de caja.

@@ -1,0 +1,12 @@
+HTML+CSS+JS reales con API TestClient autenticada y SQLite explícito: OK
+Cálculo REAL del motor desde el formulario, persistencia y gráfica: OK
+Enlace de descarga JSON apunta al snapshot correcto: OK
+Propuesta de Gemini SIMULADA sin aplicación automática: OK
+Confirmación, recálculo REAL, nueva versión y gráfica actualizada: OK
+Fallo de Gemini SIMULADO visible sin fallback: OK
+Informe simulado guardado y HTML con tablas calculadas: OK
+Reconstrucción del DOM recupera versiones de la base: OK
+Sin desborde horizontal de página a 390px: OK
+Cierre de sesión revoca acceso, navegación instrumentada: OK
+Sin errores JavaScript no controlados: OK
+11 comprobaciones DOM superadas.

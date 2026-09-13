@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<script src="/static/js/session.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Planificador de flujo de caja treasury prototype">
+  <title>C1 Tesorería 6.0 — Planificador de flujo de caja</title>
+  <link rel="stylesheet" href="/static/vendor/katex/katex.min.css?v=0.16.22">
+  <link rel="stylesheet" href="/static/css/styles.css?v=4">
+</head>
+<body class="app-page">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <a class="brand brand-on-dark sidebar-brand" href="/dashboard" aria-label="Inicio de C1 SuperPro">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy"><strong>C1</strong> SuperPro</span>
+      </a>
+      <p class="sidebar-label">Banca empresarial</p>
+      <nav class="side-nav"><a class="side-nav-item featured" href="/predictions"><span class="nav-icon">↗</span><span>Predicción y compras</span></a><a class="side-nav-item" href="/calendar"><span class="nav-icon">▦</span><span>Calendario financiero</span></a><a class="side-nav-item" href="/workspace"><span class="nav-icon">≡</span><span>Documentos e historial</span></a>
+        <a class="side-nav-item" href="/dashboard"><span class="nav-icon">⌂</span><span>Resumen</span></a>
+        <a class="side-nav-item featured active" href="/treasury"><span class="nav-icon">⌁</span><span>Planificador de flujo de caja</span><span class="nav-pill">MVP</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="logoutButton" class="side-nav-item" type="button"><span class="nav-icon">→</span><span>Salir de la demostración</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar treasury-topbar">
+        <button class="mobile-menu-button" type="button" aria-label="Abrir navegación">☰</button>
+        <div>
+          <a class="back-link" href="/dashboard">← Volver al resumen</a>
+          <h1>Planificador de flujo de caja</h1>
+          <p class="topbar-subtitle">Proyecta, somete a estrés y corrige tu plan de liquidez de 30 días.</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="importButton" class="secondary-button" type="button">Importar plan JSON</button><input id="importInput" type="file" accept=".json,application/json" hidden>
+          <button id="loadDemoButton" class="secondary-button" type="button">Restablecer demostración</button>
+          <button id="exportButton" class="secondary-button" type="button" disabled>Exportar análisis</button>
+        </div>
+      </header><div style="margin:12px 20px;padding:12px;background:#eef4fe;border:1px solid #d2dff4;border-radius:8px"><a href="/workspace" style="font-weight:700">Documentos, historial e informes de mi empresa →</a> <span style="margin-left:14px">Versión 6.0.0-web-integrada · los saldos del panel demo son sintéticos</span></div>
+
+      <section class="content-container treasury-content">
+        <div class="prototype-banner" role="note">
+          <strong id="appVersion">Versión 6.0.0-web-integrada</strong>
+          <span>Prototipo independiente, no portal oficial. Montos en <strong id="companyCurrency">moneda de la empresa</strong>. Python calcula; Gemini interpreta. No se mueve dinero. <a href="#ai-assistant-title">Ir al chat ↓</a></span>
+        </div>
+
+        <section class="setup-grid" aria-labelledby="setup-title">
+          <div class="section-intro">
+            <p class="eyebrow text-blue">Paso 1</p>
+            <h2 id="setup-title">Define el plan de liquidez</h2>
+            <p>Ajusta el saldo inicial, el umbral de seguridad y el escenario de retraso del cliente.</p>
+          </div>
+          <div class="form-card core-settings-card">
+            <div class="form-grid four-columns">
+              <label>Saldo inicial
+                <span class="input-prefix-wrap"><span>$</span><input id="openingBalance" type="number" min="0" step="0.01"></span>
+              </label>
+              <label>Umbral de seguridad
+                <span class="input-prefix-wrap"><span>$</span><input id="liquidityThreshold" type="number" min="0" step="0.01"></span>
+              </label>
+              <label>Fecha inicial
+                <input id="startDate" type="date">
+              </label>
+              <label>Horizonte del pronóstico
+                <span class="input-suffix-wrap"><input id="forecastDays" type="number" min="1" max="365"><span>días</span></span>
+              </label>
+            </div>
+          </div>
+          <div class="form-card scenario-card">
+            <div class="card-heading-inline">
+              <div><span class="card-kicker">Escenario de estrés</span><h3>Retrasar un cobro de cliente</h3></div>
+              <label class="switch"><input id="stressEnabled" type="checkbox" checked><span></span><em>Activado</em></label>
+            </div>
+            <div class="form-grid two-columns">
+              <label>Cuenta por cobrar
+                <select id="stressEventId"></select>
+              </label>
+              <label>Retraso
+                <span class="input-suffix-wrap"><input id="stressDelayDays" type="number" min="0" max="365"><span>días</span></span>
+              </label>
+            </div>
+            <p class="field-help">El motor mueve la entrada seleccionada a una fecha posterior sin modificar el escenario base original.</p>
+          </div>
+        </section>
+
+        <section class="events-section" aria-labelledby="events-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow text-blue">Paso 2</p>
+              <h2 id="events-title">Revisa los eventos de flujo de caja</h2>
+              <p class="section-description">Estos son cobros y obligaciones sintéticos utilizados por el pronóstico.</p>
+            </div>
+            <button id="addEventButton" class="secondary-button" type="button">+ Agregar evento</button>
+          </div>
+          <div class="table-card">
+            <div class="table-scroll">
+              <table class="events-table">
+                <thead>
+                  <tr>
+                    <th>Contraparte</th><th>Tipo</th><th>Monto</th><th>Fecha esperada</th>
+                    <th>Confianza</th><th>Categoría</th><th><span class="sr-only">Acciones</span></th>
+                  </tr>
+                </thead>
+                <tbody id="eventsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="advanced-section" aria-labelledby="advanced-title">
+          <details id="advancedTools" class="advanced-tools">
+            <summary>
+              <span><span class="eyebrow text-blue">Herramientas avanzadas</span><strong id="advanced-title">Configura las intervenciones candidatas</strong></span>
+              <span class="summary-hint">El optimizador evalúa acciones individuales y pares</span>
+            </summary>
+            <div class="advanced-content">
+              <p class="advanced-explainer">
+                El motor ordena los planes viables de forma lexicográfica: primero el menor costo financiero
+                y después el menor impacto operativo. Configura hasta tres acciones candidatas.
+              </p>
+              <div class="intervention-grid">
+                <article class="intervention-card">
+                  <div class="intervention-card-head">
+                    <div><span class="intervention-number">01</span><h3>Acelerar cobro</h3></div>
+                    <label class="switch compact"><input id="accelerateEnabled" type="checkbox" checked><span></span><em>Usar</em></label>
+                  </div>
+                  <label>Cuenta por cobrar<select id="accelerateEventId"></select></label>
+                  <div class="form-grid two-columns compact-grid">
+                    <label>Adelantar<span class="input-suffix-wrap"><input id="accelerateDays" type="number" min="0"><span>días</span></span></label>
+                    <label>Descuento<span class="input-prefix-wrap"><span>$</span><input id="accelerateDiscount" type="number" min="0" step="0.01"></span></label>
+                  </div>
+                  <label>Impacto operativo<input id="accelerateImpact" type="number" min="0" max="10"></label>
+                </article>
+
+                <article class="intervention-card">
+                  <div class="intervention-card-head">
+                    <div><span class="intervention-number">02</span><h3>Diferir pago</h3></div>
+                    <label class="switch compact"><input id="deferEnabled" type="checkbox" checked><span></span><em>Usar</em></label>
+                  </div>
+                  <label>Cuenta por pagar<select id="deferEventId"></select></label>
+                  <div class="form-grid two-columns compact-grid">
+                    <label>Retraso<span class="input-suffix-wrap"><input id="deferDays" type="number" min="0"><span>días</span></span></label>
+                    <label>Costo financiero<span class="input-prefix-wrap"><span>$</span><input id="deferCost" type="number" min="0" step="0.01"></span></label>
+                  </div>
+                  <label>Impacto operativo<input id="deferImpact" type="number" min="0" max="10"></label>
+                </article>
+
+                <article class="intervention-card">
+                  <div class="intervention-card-head">
+                    <div><span class="intervention-number">03</span><h3>Usar crédito</h3></div>
+                    <label class="switch compact"><input id="creditEnabled" type="checkbox" checked><span></span><em>Usar</em></label>
+                  </div>
+                  <label>Monto del crédito<span class="input-prefix-wrap"><span>$</span><input id="creditAmount" type="number" min="0" step="0.01"></span></label>
+                  <div class="form-grid two-columns compact-grid">
+                    <label>Fecha del crédito<span class="input-suffix-wrap"><input id="creditDays" type="number" min="0"><span>días</span></span></label>
+                    <label>Costo financiero<span class="input-prefix-wrap"><span>$</span><input id="creditCost" type="number" min="0" step="0.01"></span></label>
+                  </div>
+                  <label>Impacto operativo<input id="creditImpact" type="number" min="0" max="10"></label>
+                </article>
+              </div>
+              <div class="optimizer-settings-row">
+                <label>Máximo de acciones simultáneas
+                  <select id="maxActions"><option value="1">1 acción</option><option value="2">2 acciones</option><option value="3">3 acciones</option></select>
+                </label>
+                <p>En el MVP actual, un valor mayor evalúa más combinaciones, pero utiliza el mismo motor determinista.</p>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <div class="analyze-row">
+          <div>
+            <strong>¿Listo para ejecutar el plan?</strong>
+            <span>El análisis permanece dentro de este prototipo y utiliza datos sintéticos.</span>
+          </div>
+          <button id="analyzeButton" class="primary-button large-button" type="button">
+            <span class="button-label">Ejecutar pronóstico y optimizador</span><span class="button-spinner" hidden></span>
+          </button>
+        </div>
+        <p id="analysisError" class="analysis-error" role="alert" hidden></p>
+
+        <section id="resultsSection" class="results-section" aria-labelledby="results-title" hidden>
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow text-blue">Análisis completado</p>
+              <h2 id="results-title">Centro de decisiones de liquidez</h2>
+            </div>
+            <span id="resultStatusBadge" class="result-status-badge"></span>
+          </div>
+
+          <div class="metric-grid results-metrics">
+            <article class="metric-card"><span>Primera fecha de riesgo</span><strong id="riskDateMetric" class="metric-value metric-value-small">—</strong><small>Saldo conservador por debajo del umbral</small></article>
+            <article class="metric-card"><span>Mínimo del escenario</span><strong id="minimumMetric" class="metric-value metric-value-small">—</strong><small>Saldo conservador más bajo</small></article>
+            <article class="metric-card"><span>Faltante proyectado</span><strong id="shortfallMetric" class="metric-value metric-value-small">—</strong><small>Diferencia respecto al umbral de seguridad</small></article>
+            <article class="metric-card result-repaired-card"><span>Después de la recomendación</span><strong id="repairedMetric" class="metric-value metric-value-small">—</strong><small>Mínimo conservador corregido</small></article>
+          </div>
+
+          <div class="results-main-grid">
+            <article class="chart-card">
+              <div class="card-heading-inline chart-card-heading">
+                <div><span class="card-kicker">Trayectoria de 30 días</span><h3>Saldo de caja conservador</h3></div>
+                <div class="chart-legend" aria-label="Leyenda de la gráfica">
+                  <span><i class="chart-key baseline"></i>Escenario base</span>
+                  <span><i class="chart-key stressed"></i>Cobro retrasado</span>
+                  <span><i class="chart-key repaired"></i>Plan recomendado</span>
+                </div>
+              </div>
+              <div id="forecastChart" class="forecast-chart" role="img" aria-label="Gráfica de proyección del flujo de caja"></div>
+              <p class="chart-note">El área sombreada se encuentra por debajo del umbral de liquidez configurado.</p>
+            </article>
+
+            <aside class="recommendation-card" aria-labelledby="recommendationTitle">
+              <div class="recommendation-icon" aria-hidden="true">✓</div>
+              <span class="card-kicker">Recomendación de decisión</span>
+              <h3 id="recommendationTitle">—</h3>
+              <p id="recommendationSummary"></p>
+              <div id="selectedActions" class="selected-actions"></div>
+              <div class="recommendation-footer">
+                <span><small>Costo estimado</small><strong id="totalCost">—</strong></span>
+                <span><small>Impacto operativo</small><strong id="totalImpact">—</strong></span>
+              </div>
+            </aside>
+          </div>
+
+          <div class="explanation-grid">
+            <article class="explanation-card">
+              <span class="card-kicker">Por qué importa</span>
+              <h3 id="explanationTitle">—</h3>
+              <p id="explanationSummary"></p>
+              <p id="explanationAction" class="explanation-action"></p>
+              <p id="explanationComparison" class="muted"></p>
+              <div class="phase-note">
+                <strong>Separación de responsabilidades:</strong> el motor de Python produce todos los números; el copiloto usa esos resultados para orientar al usuario sin sustituir el cálculo auditable.
+              </div>
+            </article>
+            <article class="audit-card">
+              <span class="card-kicker">Auditoría técnica</span>
+              <h3>Qué evaluó el motor</h3>
+              <dl>
+                <div><dt>Combinaciones candidatas</dt><dd id="evaluatedCandidates">—</dd></div>
+                <div><dt>Orden de optimización</dt><dd>Costo → impacto → ID estable</dd></div>
+                <div><dt>Base del riesgo</dt><dd>Saldo conservador</dd></div>
+                <div><dt>Precisión de los datos</dt><dd>Centavos decimales</dd></div>
+              </dl>
+            </article>
+          </div>
+
+
+          <section class="ai-assistant-card" aria-labelledby="ai-assistant-title">
+            <div class="ai-assistant-header">
+              <div>
+                <span class="card-kicker">Copiloto de tesorería</span>
+                <h3 id="ai-assistant-title">Consulta el copiloto sobre este análisis</h3>
+                <p>Pregunta con tus propias palabras. Gemini propone parámetros y Python calcula el efecto. Las respuestas admiten Markdown y fórmulas LaTeX. La vista previa no cambia la gráfica hasta que confirmes.</p>
+              </div>
+              <span id="aiStatusBadge" class="ai-status-badge checking">Comprobando conexión…</span>
+            </div>
+
+            <div class="gemini-controls"><button id="checkGeminiButton" type="button" class="secondary-button">Probar Gemini</button><span>Prueba de conexión y de interpretación; consume cuota.</span></div>
+            <p id="assistantWarning" class="assistant-warning" role="alert" hidden></p>
+            <button id="retryAssistantButton" class="secondary-button" type="button" hidden>Reintentar última consulta</button>
+            <div id="assistantMessages" class="assistant-messages" aria-live="polite" aria-label="Conversación con el copiloto">
+
+            </div>
+
+            <div class="assistant-quick-actions" aria-label="Preguntas sugeridas">
+              <button type="button" data-ai-question="¿Por qué aparece el riesgo de liquidez?">¿Por qué hay riesgo?</button>
+              <button type="button" data-ai-question="¿Cuál es la mejor recomendación y por qué?">Explica la recomendación</button>
+              <button type="button" data-ai-question="¿Qué representa cada línea de la gráfica?">Explica la gráfica</button>
+              <button type="button" data-ai-question="Retrasa al Cliente principal 10 días">Probar 10 días de retraso</button>
+            </div>
+
+            <div id="aiSuggestedChanges" class="ai-suggested-changes" hidden>
+              <div>
+                <strong>Cambios propuestos</strong>
+                <ul id="aiSuggestedChangesList"></ul>
+              </div>
+              <button id="applyAiChangesButton" class="primary-button" type="button">Aplicar escenario a la gráfica</button>
+            </div>
+
+            <form id="assistantForm" class="assistant-form">
+              <label class="sr-only" for="assistantInput">Pregunta para el copiloto</label>
+              <textarea id="assistantInput" rows="2" maxlength="2000" placeholder="Ejemplo: ¿Qué pasa si mi cliente se retrasa 10 días?" required></textarea>
+              <button id="assistantSendButton" class="primary-button" type="submit">
+                <span>Enviar</span>
+                <span class="assistant-send-spinner" hidden aria-hidden="true"></span>
+              </button>
+            </form>
+            
+            <p class="assistant-disclaimer">El chat utiliza Gemini; no hay un respaldo que finja ser IA. Cada mensaje puede enviar hasta dos solicitudes y consumir cuota. Usa datos sintéticos hasta revisar seguridad y condiciones de Google. Sin clave puedes usar el formulario manual. Para cambiar la clave, abre CONFIGURAR_GEMINI.bat en esta carpeta.</p>
+          </section>
+
+          <p class="field-help financial-limit">Alcance del motor original: los costos financieros ordenan las acciones, pero no todos se descuentan del saldo; el crédito se registra como entrada sin calendario de devolución. Los pagos fuera del horizonte siguen pendientes. Esto no es una garantía ni una oferta de crédito.</p>
+          <section class="alternatives-section" aria-labelledby="alternatives-title">
+            <div class="section-heading-row compact-heading">
+              <div><span class="card-kicker">Comparación de candidatos</span><h3 id="alternatives-title">Cómo funciona cada acción por separado</h3></div>
+            </div>
+            <div id="alternativesGrid" class="alternatives-grid"></div>
+          </section>
+        </section>
+      </section>
+    <section class="card" style="margin:24px;padding:20px"><h2>Conservar este análisis</h2><p>Guarda una nueva versión de entradas y resultados en tu empresa. No modifica los movimientos históricos.</p><button class="primary-button" id="savePlanButton" type="button">Guardar análisis en mi historial</button><p id="savePlanStatus" role="status"></p></section></main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/static/vendor/marked/marked.umd.js?v=16.4.1" defer></script>
+  <script src="/static/vendor/dompurify/purify.min.js?v=3.2.6" defer></script>
+  <script src="/static/vendor/katex/katex.min.js?v=0.16.22" defer></script>
+  <script src="/static/js/rich-text.js?v=1" defer></script>
+  <script src="/static/js/treasury.js?v=4" defer></script>
+</body>
+</html>

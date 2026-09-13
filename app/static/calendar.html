@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Calendario financiero de C1 Tesorería">
+  <title>C1 Tesorería · Calendario financiero</title>
+  <link rel="stylesheet" href="/static/css/workspace.css">
+  <link rel="stylesheet" href="/static/css/calendar.css?v=2">
+  <script src="/static/js/session.js" defer></script>
+  <script src="/static/js/calendar.js?v=2" defer></script>
+</head>
+<body>
+  <header class="topbar calendar-topbar">
+    <a class="brand" href="/dashboard">C1 <span>TESORERÍA</span></a>
+    <nav aria-label="Navegación principal">
+      <a href="/dashboard">Resumen</a>
+      <a href="/workspace">Documentos</a>
+      <a href="/predictions">Predicción y compras</a>
+      <a class="current" href="/calendar" aria-current="page">Calendario</a>
+    </nav>
+    <button id="logout" class="push secondary">Cerrar sesión</button>
+  </header>
+
+  <main class="container calendar-container">
+    <div class="calendar-hero">
+      <div>
+        <p class="eyebrow">AGENDA FINANCIERA UNIFICADA</p>
+        <h1>Decide con fechas, no con listas sueltas</h1>
+        <p class="muted">Consulta cobros, pagos, movimientos realizados, compras y el saldo conservador en una sola vista.</p>
+      </div>
+      <a class="button" href="/predictions">Analizar una compra</a>
+    </div>
+
+    <p id="calendarError" class="error" role="alert" hidden></p>
+    <section class="calendar-summary" aria-label="Resumen del mes">
+      <article><span>Eventos visibles</span><strong id="eventCount">—</strong></article>
+      <article><span>Entradas</span><strong id="inflowTotal">—</strong></article>
+      <article><span>Salidas</span><strong id="outflowTotal">—</strong></article>
+      <article><span>Fecha de mayor riesgo</span><strong id="riskDate">—</strong></article>
+    </section>
+
+    <section class="panel calendar-panel">
+      <div class="calendar-toolbar">
+        <div class="month-controls">
+          <button id="previousMonth" class="secondary icon-button" aria-label="Mes anterior">‹</button>
+          <button id="todayButton" class="secondary">Hoy</button>
+          <button id="nextMonth" class="secondary icon-button" aria-label="Mes siguiente">›</button>
+          <h2 id="monthTitle">Calendario</h2>
+        </div>
+        <label class="prediction-picker">Escenario de caja
+          <select id="predictionSelect"><option value="">Sin predicción guardada</option></select>
+        </label>
+      </div>
+
+      <div class="calendar-filters" aria-label="Filtrar eventos">
+        <button class="filter-chip active" data-filter="all" aria-pressed="true">Todos</button>
+        <button class="filter-chip" data-filter="confirmed" aria-pressed="false">Confirmados</button>
+        <button class="filter-chip" data-filter="forecast" aria-pressed="false">Pronóstico</button>
+        <button class="filter-chip" data-filter="purchase" aria-pressed="false">Compras</button>
+        <button class="filter-chip" data-filter="schedule" aria-pressed="false">No laborables</button>
+      </div>
+
+      <div class="weekday-row" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+      <div id="calendarGrid" class="calendar-grid" aria-label="Mes financiero"></div>
+      <p id="calendarNotice" class="calendar-note"></p>
+    </section>
+
+    <section id="dayDetail" class="panel day-detail" aria-live="polite">
+      <div>
+        <p class="eyebrow">DETALLE DEL DÍA</p>
+        <h2 id="dayTitle">Selecciona una fecha</h2>
+        <p id="dayBalance" class="muted">Aquí verás los eventos y el saldo proyectado de ese cierre.</p>
+      </div>
+      <div id="dayEvents" class="day-events"><p class="muted">No hay una fecha seleccionada.</p></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "openingBalance": "50000.00",
+  "liquidityThreshold": "20000.00",
+  "startDate": "2026-09-12",
+  "days": 30,
+  "events": [
+    {
+      "id": "receivable-main",
+      "counterparty": "Cliente principal",
+      "amount": "18000.00",
+      "direction": "inflow",
+      "expectedDate": "2026-09-19",
+      "category": "cuentas_por_cobrar",
+      "confidence": "0.90",
+      "recurring": false
+    },
+    {
+      "id": "receivable-secondary",
+      "counterparty": "Cliente secundario",
+      "amount": "9000.00",
+      "direction": "inflow",
+      "expectedDate": "2026-09-28",
+      "category": "cuentas_por_cobrar",
+      "confidence": "0.85",
+      "recurring": false
+    },
+    {
+      "id": "supplier-critical",
+      "counterparty": "Proveedor de acero",
+      "amount": "12500.00",
+      "direction": "outflow",
+      "expectedDate": "2026-09-17",
+      "category": "proveedor",
+      "confidence": "1.00",
+      "recurring": false
+    },
+    {
+      "id": "nomina",
+      "counterparty": "Nómina",
+      "amount": "26000.00",
+      "direction": "outflow",
+      "expectedDate": "2026-09-24",
+      "category": "nomina",
+      "confidence": "1.00",
+      "recurring": true
+    },
+    {
+      "id": "supplier-flexible",
+      "counterparty": "Proveedor de empaques",
+      "amount": "7000.00",
+      "direction": "outflow",
+      "expectedDate": "2026-09-23",
+      "category": "proveedor",
+      "confidence": "1.00",
+      "recurring": false
+    },
+    {
+      "id": "renta",
+      "counterparty": "Renta de almacén",
+      "amount": "4500.00",
+      "direction": "outflow",
+      "expectedDate": "2026-10-03",
+      "category": "renta",
+      "confidence": "1.00",
+      "recurring": true
+    }
+  ],
+  "stressScenario": {
+    "enabled": true,
+    "eventId": "receivable-main",
+    "delayDays": 0
+  },
+  "interventions": {
+    "accelerateReceivable": {
+      "enabled": true,
+      "eventId": "receivable-secondary",
+      "daysEarlier": 6,
+      "discount": "180.00",
+      "operationalImpact": 1
+    },
+    "deferPayable": {
+      "enabled": true,
+      "eventId": "supplier-flexible",
+      "delayDays": 6,
+      "financialCost": "70.00",
+      "operationalImpact": 2
+    },
+    "creditLine": {
+      "enabled": true,
+      "amount": "9000.00",
+      "daysFromStart": 10,
+      "financialCost": "120.00",
+      "operationalImpact": 3
+    }
+  },
+  "maxActions": 2
+}

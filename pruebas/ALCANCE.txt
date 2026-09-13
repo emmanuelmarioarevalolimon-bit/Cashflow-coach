@@ -1,0 +1,20 @@
+C1 TESORERIA 6.0.0-WEB-INTEGRADA — VALIDACION DE ESTA ENTREGA
+
+171 pruebas Python/API superadas. Motor estadístico real con datos sintéticos.
+11 comprobaciones DOM con HTML/CSS/JS reales, fetch conectado a FastAPI TestClient.
+Uvicorn + HTTP local reales: sesión, cálculo, guardado y lectura verificados con urllib.
+Sintaxis Python y JavaScript comprobada.
+Base SQLite temporal. Las respuestas Gemini de las pruebas son SIMULADAS y están
+marcadas así. No se usaron claves reales de API ni la instancia SQL Server del usuario.
+
+NO se completó navegación HTTP end-to-end con Chromium: ERR_BLOCKED_BY_ADMINISTRATOR.
+Se mantuvo la política. browser_predictions_dom.py no navega a localhost: carga los
+archivos en memoria e instrumenta fetch/navegación. Las capturas muestran esa prueba,
+no una respuesta real de Google ni una base SQL Server.
+
+No se certificó seguridad, precisión financiera, tratamiento legal de datos,
+rendimiento concurrente, ni instalación en Windows/ODBC/SQL Server real.
+El iniciador de un solo archivo se valida en el contenedor; la rama Windows debe
+probarse en el equipo del usuario. La configuración real solo se verifica allí.
+
+Los archivos de prueba no contienen datos ni claves de ninguna empresa real.

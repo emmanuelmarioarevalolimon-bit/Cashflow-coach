@@ -1,0 +1,15 @@
+NAVEGADOR HTTP REAL / MOTOR REAL / SQLite temporal / GEMINI SIMULADO
+Registro, sesión, navegación y estado SQLite explícito: OK
+Ejemplo de un clic, motor estadístico REAL, persistencia y gráfica SVG: OK
+Compra, catálogo persistente y estimación por faltantes: OK
+Descarga del JSON con resultados del motor real: OK
+Gemini SIMULADO propone pero no aplica automáticamente: OK
+Confirmación recalcula, guarda nueva versión y actualiza gráfica: OK
+Error de proveedor visible; no respuesta local fingida: OK
+Informe narrativo simulado, tablas Python y descarga HTML: OK
+Recarga recupera los análisis de la base: OK
+Vista móvil sin desborde de página: OK
+Calendario laboral y días con venta esperada cero: OK
+Cerrar sesión revoca acceso a predicciones: OK
+Sin errores JavaScript no controlados: OK
+No se usaron cuentas reales de Gemini ni SQL Server.

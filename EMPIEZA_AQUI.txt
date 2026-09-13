@@ -13,9 +13,13 @@ Para probar explícitamente con SQLite en lugar de SQL Server, en una instalaci�
 NUEVA sin .env: python .\iniciar.py --demo-local
 Ese modo NO cambia una configuración existente ni migra datos.
 
-Al abrir: crea una cuenta -> Predicción avanzada -> Cargar ejemplo sintético ->
-Calcular y guardar. No necesitas Gemini para ejecutar el cálculo.
+Al abrir: crea una cuenta -> Predicción avanzada -> Ejecutar ejemplo completo.
+No necesitas Gemini para ejecutar el cálculo. En Compra de mercancía puedes guardar
+productos en el catálogo, registrar faltantes y configurar los días sin operación.
 Configura Gemini para el chat y el informe. Confirma propuestas antes de recalcular.
+El chat admite Markdown y LaTeX. Para ajustar su registro académico en Google AI
+Studio, sigue docs/CONFIGURAR_GEMINI_Y_ESTILO_ACADEMICO.md y edita
+assistant_instructions.txt.
 
 No necesitas motor-predictivo-api ni un segundo servidor en 8787. Usa el puerto
 que indique el iniciador y conserva PowerShell abierto. Ctrl+C detiene el servidor.

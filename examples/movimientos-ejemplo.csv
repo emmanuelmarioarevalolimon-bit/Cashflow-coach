@@ -1,0 +1,5 @@
+﻿fecha,contraparte,monto,tipo,naturaleza,moneda,categoria,referencia
+2026-08-10,Venta ya cobrada,1500,entrada,realizado,MXN,ventas,MOV-001
+2026-08-12,Gasto ya pagado,500,salida,realizado,MXN,operacion,MOV-002
+2026-09-20,Cliente principal,8000,entrada,por_cobrar,MXN,clientes,FAC-101
+2026-09-24,Proveedor,3500,salida,por_pagar,MXN,proveedores,FAC-202

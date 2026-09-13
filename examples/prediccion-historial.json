@@ -1,0 +1,4278 @@
+{
+  "history": [
+    {
+      "id": "venta-0",
+      "counterparty": "Ventas de mostrador",
+      "amount": "436.97",
+      "direction": "inflow",
+      "occurred_on": "2026-03-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-0",
+      "counterparty": "Operación diaria",
+      "amount": "156.86",
+      "direction": "outflow",
+      "occurred_on": "2026-03-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-1",
+      "counterparty": "Ventas de mostrador",
+      "amount": "486.69",
+      "direction": "inflow",
+      "occurred_on": "2026-03-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-1",
+      "counterparty": "Operación diaria",
+      "amount": "192.45",
+      "direction": "outflow",
+      "occurred_on": "2026-03-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-2",
+      "counterparty": "Ventas de mostrador",
+      "amount": "580.92",
+      "direction": "inflow",
+      "occurred_on": "2026-03-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-2",
+      "counterparty": "Operación diaria",
+      "amount": "290.51",
+      "direction": "outflow",
+      "occurred_on": "2026-03-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-3",
+      "counterparty": "Ventas de mostrador",
+      "amount": "429.73",
+      "direction": "inflow",
+      "occurred_on": "2026-03-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-3",
+      "counterparty": "Operación diaria",
+      "amount": "189.24",
+      "direction": "outflow",
+      "occurred_on": "2026-03-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-4",
+      "counterparty": "Ventas de mostrador",
+      "amount": "355.85",
+      "direction": "inflow",
+      "occurred_on": "2026-03-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-4",
+      "counterparty": "Operación diaria",
+      "amount": "197.62",
+      "direction": "outflow",
+      "occurred_on": "2026-03-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-4",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-03-20",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-5",
+      "counterparty": "Ventas de mostrador",
+      "amount": "314.97",
+      "direction": "inflow",
+      "occurred_on": "2026-03-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-5",
+      "counterparty": "Operación diaria",
+      "amount": "218.11",
+      "direction": "outflow",
+      "occurred_on": "2026-03-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-5",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-03-21",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-6",
+      "counterparty": "Ventas de mostrador",
+      "amount": "472.53",
+      "direction": "inflow",
+      "occurred_on": "2026-03-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-6",
+      "counterparty": "Operación diaria",
+      "amount": "141.36",
+      "direction": "outflow",
+      "occurred_on": "2026-03-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-7",
+      "counterparty": "Ventas de mostrador",
+      "amount": "557.54",
+      "direction": "inflow",
+      "occurred_on": "2026-03-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-7",
+      "counterparty": "Operación diaria",
+      "amount": "151.13",
+      "direction": "outflow",
+      "occurred_on": "2026-03-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-8",
+      "counterparty": "Ventas de mostrador",
+      "amount": "649.11",
+      "direction": "inflow",
+      "occurred_on": "2026-03-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-8",
+      "counterparty": "Operación diaria",
+      "amount": "189.03",
+      "direction": "outflow",
+      "occurred_on": "2026-03-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-9",
+      "counterparty": "Ventas de mostrador",
+      "amount": "589.83",
+      "direction": "inflow",
+      "occurred_on": "2026-03-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-9",
+      "counterparty": "Operación diaria",
+      "amount": "207.24",
+      "direction": "outflow",
+      "occurred_on": "2026-03-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-9",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-03-25",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-10",
+      "counterparty": "Ventas de mostrador",
+      "amount": "477.52",
+      "direction": "inflow",
+      "occurred_on": "2026-03-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-10",
+      "counterparty": "Operación diaria",
+      "amount": "277.00",
+      "direction": "outflow",
+      "occurred_on": "2026-03-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-11",
+      "counterparty": "Ventas de mostrador",
+      "amount": "442.89",
+      "direction": "inflow",
+      "occurred_on": "2026-03-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-11",
+      "counterparty": "Operación diaria",
+      "amount": "200.78",
+      "direction": "outflow",
+      "occurred_on": "2026-03-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "reparacion-11",
+      "counterparty": "Reparación extraordinaria",
+      "amount": "2110.00",
+      "direction": "outflow",
+      "occurred_on": "2026-03-27",
+      "category": "mantenimiento",
+      "irregular": true,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-12",
+      "counterparty": "Ventas de mostrador",
+      "amount": "217.65",
+      "direction": "inflow",
+      "occurred_on": "2026-03-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-12",
+      "counterparty": "Operación diaria",
+      "amount": "246.60",
+      "direction": "outflow",
+      "occurred_on": "2026-03-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-13",
+      "counterparty": "Ventas de mostrador",
+      "amount": "464.39",
+      "direction": "inflow",
+      "occurred_on": "2026-03-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-13",
+      "counterparty": "Operación diaria",
+      "amount": "163.75",
+      "direction": "outflow",
+      "occurred_on": "2026-03-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-14",
+      "counterparty": "Ventas de mostrador",
+      "amount": "494.43",
+      "direction": "inflow",
+      "occurred_on": "2026-03-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-14",
+      "counterparty": "Operación diaria",
+      "amount": "240.43",
+      "direction": "outflow",
+      "occurred_on": "2026-03-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-15",
+      "counterparty": "Ventas de mostrador",
+      "amount": "508.30",
+      "direction": "inflow",
+      "occurred_on": "2026-03-31",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-15",
+      "counterparty": "Operación diaria",
+      "amount": "147.09",
+      "direction": "outflow",
+      "occurred_on": "2026-03-31",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-16",
+      "counterparty": "Ventas de mostrador",
+      "amount": "518.06",
+      "direction": "inflow",
+      "occurred_on": "2026-04-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-16",
+      "counterparty": "Operación diaria",
+      "amount": "281.62",
+      "direction": "outflow",
+      "occurred_on": "2026-04-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-17",
+      "counterparty": "Ventas de mostrador",
+      "amount": "511.19",
+      "direction": "inflow",
+      "occurred_on": "2026-04-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-17",
+      "counterparty": "Operación diaria",
+      "amount": "204.41",
+      "direction": "outflow",
+      "occurred_on": "2026-04-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-18",
+      "counterparty": "Ventas de mostrador",
+      "amount": "415.69",
+      "direction": "inflow",
+      "occurred_on": "2026-04-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-18",
+      "counterparty": "Operación diaria",
+      "amount": "181.95",
+      "direction": "outflow",
+      "occurred_on": "2026-04-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-18",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-04-03",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-19",
+      "counterparty": "Ventas de mostrador",
+      "amount": "346.99",
+      "direction": "inflow",
+      "occurred_on": "2026-04-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-19",
+      "counterparty": "Operación diaria",
+      "amount": "151.26",
+      "direction": "outflow",
+      "occurred_on": "2026-04-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-19",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-04-04",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-20",
+      "counterparty": "Ventas de mostrador",
+      "amount": "368.16",
+      "direction": "inflow",
+      "occurred_on": "2026-04-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-20",
+      "counterparty": "Operación diaria",
+      "amount": "216.93",
+      "direction": "outflow",
+      "occurred_on": "2026-04-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-21",
+      "counterparty": "Ventas de mostrador",
+      "amount": "520.37",
+      "direction": "inflow",
+      "occurred_on": "2026-04-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-21",
+      "counterparty": "Operación diaria",
+      "amount": "163.56",
+      "direction": "outflow",
+      "occurred_on": "2026-04-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-22",
+      "counterparty": "Ventas de mostrador",
+      "amount": "541.46",
+      "direction": "inflow",
+      "occurred_on": "2026-04-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-22",
+      "counterparty": "Operación diaria",
+      "amount": "203.65",
+      "direction": "outflow",
+      "occurred_on": "2026-04-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-23",
+      "counterparty": "Ventas de mostrador",
+      "amount": "509.14",
+      "direction": "inflow",
+      "occurred_on": "2026-04-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-23",
+      "counterparty": "Operación diaria",
+      "amount": "198.49",
+      "direction": "outflow",
+      "occurred_on": "2026-04-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-24",
+      "counterparty": "Ventas de mostrador",
+      "amount": "507.83",
+      "direction": "inflow",
+      "occurred_on": "2026-04-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-24",
+      "counterparty": "Operación diaria",
+      "amount": "168.10",
+      "direction": "outflow",
+      "occurred_on": "2026-04-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-25",
+      "counterparty": "Ventas de mostrador",
+      "amount": "349.05",
+      "direction": "inflow",
+      "occurred_on": "2026-04-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-25",
+      "counterparty": "Operación diaria",
+      "amount": "154.68",
+      "direction": "outflow",
+      "occurred_on": "2026-04-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-26",
+      "counterparty": "Ventas de mostrador",
+      "amount": "374.86",
+      "direction": "inflow",
+      "occurred_on": "2026-04-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-26",
+      "counterparty": "Operación diaria",
+      "amount": "217.15",
+      "direction": "outflow",
+      "occurred_on": "2026-04-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-27",
+      "counterparty": "Ventas de mostrador",
+      "amount": "516.86",
+      "direction": "inflow",
+      "occurred_on": "2026-04-12",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-27",
+      "counterparty": "Operación diaria",
+      "amount": "271.37",
+      "direction": "outflow",
+      "occurred_on": "2026-04-12",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-28",
+      "counterparty": "Ventas de mostrador",
+      "amount": "523.06",
+      "direction": "inflow",
+      "occurred_on": "2026-04-13",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-28",
+      "counterparty": "Operación diaria",
+      "amount": "229.18",
+      "direction": "outflow",
+      "occurred_on": "2026-04-13",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-29",
+      "counterparty": "Ventas de mostrador",
+      "amount": "522.60",
+      "direction": "inflow",
+      "occurred_on": "2026-04-14",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-29",
+      "counterparty": "Operación diaria",
+      "amount": "144.57",
+      "direction": "outflow",
+      "occurred_on": "2026-04-14",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-30",
+      "counterparty": "Ventas de mostrador",
+      "amount": "611.50",
+      "direction": "inflow",
+      "occurred_on": "2026-04-15",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-30",
+      "counterparty": "Operación diaria",
+      "amount": "205.55",
+      "direction": "outflow",
+      "occurred_on": "2026-04-15",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-31",
+      "counterparty": "Ventas de mostrador",
+      "amount": "575.46",
+      "direction": "inflow",
+      "occurred_on": "2026-04-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-31",
+      "counterparty": "Operación diaria",
+      "amount": "205.33",
+      "direction": "outflow",
+      "occurred_on": "2026-04-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-32",
+      "counterparty": "Ventas de mostrador",
+      "amount": "401.06",
+      "direction": "inflow",
+      "occurred_on": "2026-04-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-32",
+      "counterparty": "Operación diaria",
+      "amount": "275.78",
+      "direction": "outflow",
+      "occurred_on": "2026-04-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-32",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-04-17",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-33",
+      "counterparty": "Ventas de mostrador",
+      "amount": "445.22",
+      "direction": "inflow",
+      "occurred_on": "2026-04-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-33",
+      "counterparty": "Operación diaria",
+      "amount": "167.45",
+      "direction": "outflow",
+      "occurred_on": "2026-04-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-34",
+      "counterparty": "Ventas de mostrador",
+      "amount": "418.80",
+      "direction": "inflow",
+      "occurred_on": "2026-04-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-34",
+      "counterparty": "Operación diaria",
+      "amount": "232.93",
+      "direction": "outflow",
+      "occurred_on": "2026-04-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-35",
+      "counterparty": "Ventas de mostrador",
+      "amount": "391.61",
+      "direction": "inflow",
+      "occurred_on": "2026-04-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-35",
+      "counterparty": "Operación diaria",
+      "amount": "183.29",
+      "direction": "outflow",
+      "occurred_on": "2026-04-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-35",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-04-20",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-36",
+      "counterparty": "Ventas de mostrador",
+      "amount": "476.72",
+      "direction": "inflow",
+      "occurred_on": "2026-04-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-36",
+      "counterparty": "Operación diaria",
+      "amount": "202.83",
+      "direction": "outflow",
+      "occurred_on": "2026-04-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-37",
+      "counterparty": "Ventas de mostrador",
+      "amount": "428.78",
+      "direction": "inflow",
+      "occurred_on": "2026-04-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-37",
+      "counterparty": "Operación diaria",
+      "amount": "276.79",
+      "direction": "outflow",
+      "occurred_on": "2026-04-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-38",
+      "counterparty": "Ventas de mostrador",
+      "amount": "475.15",
+      "direction": "inflow",
+      "occurred_on": "2026-04-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-38",
+      "counterparty": "Operación diaria",
+      "amount": "263.29",
+      "direction": "outflow",
+      "occurred_on": "2026-04-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-39",
+      "counterparty": "Ventas de mostrador",
+      "amount": "479.71",
+      "direction": "inflow",
+      "occurred_on": "2026-04-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-39",
+      "counterparty": "Operación diaria",
+      "amount": "220.80",
+      "direction": "outflow",
+      "occurred_on": "2026-04-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-39",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-04-24",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-40",
+      "counterparty": "Ventas de mostrador",
+      "amount": "351.70",
+      "direction": "inflow",
+      "occurred_on": "2026-04-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-40",
+      "counterparty": "Operación diaria",
+      "amount": "146.07",
+      "direction": "outflow",
+      "occurred_on": "2026-04-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-41",
+      "counterparty": "Ventas de mostrador",
+      "amount": "298.73",
+      "direction": "inflow",
+      "occurred_on": "2026-04-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-41",
+      "counterparty": "Operación diaria",
+      "amount": "219.96",
+      "direction": "outflow",
+      "occurred_on": "2026-04-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-42",
+      "counterparty": "Ventas de mostrador",
+      "amount": "438.51",
+      "direction": "inflow",
+      "occurred_on": "2026-04-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-42",
+      "counterparty": "Operación diaria",
+      "amount": "197.53",
+      "direction": "outflow",
+      "occurred_on": "2026-04-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-43",
+      "counterparty": "Ventas de mostrador",
+      "amount": "788.05",
+      "direction": "inflow",
+      "occurred_on": "2026-04-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-43",
+      "counterparty": "Operación diaria",
+      "amount": "195.88",
+      "direction": "outflow",
+      "occurred_on": "2026-04-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-44",
+      "counterparty": "Ventas de mostrador",
+      "amount": "620.35",
+      "direction": "inflow",
+      "occurred_on": "2026-04-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-44",
+      "counterparty": "Operación diaria",
+      "amount": "191.83",
+      "direction": "outflow",
+      "occurred_on": "2026-04-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-45",
+      "counterparty": "Ventas de mostrador",
+      "amount": "453.37",
+      "direction": "inflow",
+      "occurred_on": "2026-04-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-45",
+      "counterparty": "Operación diaria",
+      "amount": "275.52",
+      "direction": "outflow",
+      "occurred_on": "2026-04-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-46",
+      "counterparty": "Ventas de mostrador",
+      "amount": "571.02",
+      "direction": "inflow",
+      "occurred_on": "2026-05-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-46",
+      "counterparty": "Operación diaria",
+      "amount": "272.91",
+      "direction": "outflow",
+      "occurred_on": "2026-05-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-46",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-05-01",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-47",
+      "counterparty": "Ventas de mostrador",
+      "amount": "405.50",
+      "direction": "inflow",
+      "occurred_on": "2026-05-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-47",
+      "counterparty": "Operación diaria",
+      "amount": "239.33",
+      "direction": "outflow",
+      "occurred_on": "2026-05-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-48",
+      "counterparty": "Ventas de mostrador",
+      "amount": "429.24",
+      "direction": "inflow",
+      "occurred_on": "2026-05-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-48",
+      "counterparty": "Operación diaria",
+      "amount": "274.46",
+      "direction": "outflow",
+      "occurred_on": "2026-05-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-49",
+      "counterparty": "Ventas de mostrador",
+      "amount": "369.34",
+      "direction": "inflow",
+      "occurred_on": "2026-05-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-49",
+      "counterparty": "Operación diaria",
+      "amount": "206.72",
+      "direction": "outflow",
+      "occurred_on": "2026-05-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-49",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-05-04",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-50",
+      "counterparty": "Ventas de mostrador",
+      "amount": "575.03",
+      "direction": "inflow",
+      "occurred_on": "2026-05-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-50",
+      "counterparty": "Operación diaria",
+      "amount": "262.63",
+      "direction": "outflow",
+      "occurred_on": "2026-05-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-51",
+      "counterparty": "Ventas de mostrador",
+      "amount": "518.26",
+      "direction": "inflow",
+      "occurred_on": "2026-05-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-51",
+      "counterparty": "Operación diaria",
+      "amount": "247.17",
+      "direction": "outflow",
+      "occurred_on": "2026-05-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-52",
+      "counterparty": "Ventas de mostrador",
+      "amount": "484.77",
+      "direction": "inflow",
+      "occurred_on": "2026-05-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-52",
+      "counterparty": "Operación diaria",
+      "amount": "206.92",
+      "direction": "outflow",
+      "occurred_on": "2026-05-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "reparacion-52",
+      "counterparty": "Reparación extraordinaria",
+      "amount": "2001.00",
+      "direction": "outflow",
+      "occurred_on": "2026-05-07",
+      "category": "mantenimiento",
+      "irregular": true,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-53",
+      "counterparty": "Ventas de mostrador",
+      "amount": "434.30",
+      "direction": "inflow",
+      "occurred_on": "2026-05-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-53",
+      "counterparty": "Operación diaria",
+      "amount": "180.97",
+      "direction": "outflow",
+      "occurred_on": "2026-05-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-54",
+      "counterparty": "Ventas de mostrador",
+      "amount": "406.11",
+      "direction": "inflow",
+      "occurred_on": "2026-05-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-54",
+      "counterparty": "Operación diaria",
+      "amount": "182.35",
+      "direction": "outflow",
+      "occurred_on": "2026-05-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-55",
+      "counterparty": "Ventas de mostrador",
+      "amount": "441.27",
+      "direction": "inflow",
+      "occurred_on": "2026-05-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-55",
+      "counterparty": "Operación diaria",
+      "amount": "146.94",
+      "direction": "outflow",
+      "occurred_on": "2026-05-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-56",
+      "counterparty": "Ventas de mostrador",
+      "amount": "408.00",
+      "direction": "inflow",
+      "occurred_on": "2026-05-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-56",
+      "counterparty": "Operación diaria",
+      "amount": "298.08",
+      "direction": "outflow",
+      "occurred_on": "2026-05-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-57",
+      "counterparty": "Ventas de mostrador",
+      "amount": "599.54",
+      "direction": "inflow",
+      "occurred_on": "2026-05-12",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-57",
+      "counterparty": "Operación diaria",
+      "amount": "190.69",
+      "direction": "outflow",
+      "occurred_on": "2026-05-12",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-58",
+      "counterparty": "Ventas de mostrador",
+      "amount": "575.90",
+      "direction": "inflow",
+      "occurred_on": "2026-05-13",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-58",
+      "counterparty": "Operación diaria",
+      "amount": "288.81",
+      "direction": "outflow",
+      "occurred_on": "2026-05-13",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-59",
+      "counterparty": "Ventas de mostrador",
+      "amount": "516.65",
+      "direction": "inflow",
+      "occurred_on": "2026-05-14",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-59",
+      "counterparty": "Operación diaria",
+      "amount": "169.32",
+      "direction": "outflow",
+      "occurred_on": "2026-05-14",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-60",
+      "counterparty": "Ventas de mostrador",
+      "amount": "400.33",
+      "direction": "inflow",
+      "occurred_on": "2026-05-15",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-60",
+      "counterparty": "Operación diaria",
+      "amount": "211.52",
+      "direction": "outflow",
+      "occurred_on": "2026-05-15",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-60",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-05-15",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-61",
+      "counterparty": "Ventas de mostrador",
+      "amount": "516.78",
+      "direction": "inflow",
+      "occurred_on": "2026-05-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-61",
+      "counterparty": "Operación diaria",
+      "amount": "259.89",
+      "direction": "outflow",
+      "occurred_on": "2026-05-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-62",
+      "counterparty": "Ventas de mostrador",
+      "amount": "426.93",
+      "direction": "inflow",
+      "occurred_on": "2026-05-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-62",
+      "counterparty": "Operación diaria",
+      "amount": "283.35",
+      "direction": "outflow",
+      "occurred_on": "2026-05-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-63",
+      "counterparty": "Ventas de mostrador",
+      "amount": "443.50",
+      "direction": "inflow",
+      "occurred_on": "2026-05-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-63",
+      "counterparty": "Operación diaria",
+      "amount": "208.86",
+      "direction": "outflow",
+      "occurred_on": "2026-05-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-64",
+      "counterparty": "Ventas de mostrador",
+      "amount": "580.69",
+      "direction": "inflow",
+      "occurred_on": "2026-05-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-64",
+      "counterparty": "Operación diaria",
+      "amount": "228.24",
+      "direction": "outflow",
+      "occurred_on": "2026-05-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-65",
+      "counterparty": "Ventas de mostrador",
+      "amount": "539.07",
+      "direction": "inflow",
+      "occurred_on": "2026-05-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-65",
+      "counterparty": "Operación diaria",
+      "amount": "207.58",
+      "direction": "outflow",
+      "occurred_on": "2026-05-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-65",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-05-20",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-66",
+      "counterparty": "Ventas de mostrador",
+      "amount": "564.06",
+      "direction": "inflow",
+      "occurred_on": "2026-05-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-66",
+      "counterparty": "Operación diaria",
+      "amount": "223.29",
+      "direction": "outflow",
+      "occurred_on": "2026-05-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-67",
+      "counterparty": "Ventas de mostrador",
+      "amount": "476.77",
+      "direction": "inflow",
+      "occurred_on": "2026-05-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-67",
+      "counterparty": "Operación diaria",
+      "amount": "290.02",
+      "direction": "outflow",
+      "occurred_on": "2026-05-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-68",
+      "counterparty": "Ventas de mostrador",
+      "amount": "474.02",
+      "direction": "inflow",
+      "occurred_on": "2026-05-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-68",
+      "counterparty": "Operación diaria",
+      "amount": "194.20",
+      "direction": "outflow",
+      "occurred_on": "2026-05-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-69",
+      "counterparty": "Ventas de mostrador",
+      "amount": "362.79",
+      "direction": "inflow",
+      "occurred_on": "2026-05-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-69",
+      "counterparty": "Operación diaria",
+      "amount": "289.81",
+      "direction": "outflow",
+      "occurred_on": "2026-05-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-69",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-05-24",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-70",
+      "counterparty": "Ventas de mostrador",
+      "amount": "586.48",
+      "direction": "inflow",
+      "occurred_on": "2026-05-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-70",
+      "counterparty": "Operación diaria",
+      "amount": "172.16",
+      "direction": "outflow",
+      "occurred_on": "2026-05-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-71",
+      "counterparty": "Ventas de mostrador",
+      "amount": "498.12",
+      "direction": "inflow",
+      "occurred_on": "2026-05-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-71",
+      "counterparty": "Operación diaria",
+      "amount": "152.74",
+      "direction": "outflow",
+      "occurred_on": "2026-05-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-72",
+      "counterparty": "Ventas de mostrador",
+      "amount": "629.44",
+      "direction": "inflow",
+      "occurred_on": "2026-05-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-72",
+      "counterparty": "Operación diaria",
+      "amount": "286.77",
+      "direction": "outflow",
+      "occurred_on": "2026-05-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-73",
+      "counterparty": "Ventas de mostrador",
+      "amount": "564.74",
+      "direction": "inflow",
+      "occurred_on": "2026-05-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-73",
+      "counterparty": "Operación diaria",
+      "amount": "220.18",
+      "direction": "outflow",
+      "occurred_on": "2026-05-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-74",
+      "counterparty": "Ventas de mostrador",
+      "amount": "510.43",
+      "direction": "inflow",
+      "occurred_on": "2026-05-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-74",
+      "counterparty": "Operación diaria",
+      "amount": "202.11",
+      "direction": "outflow",
+      "occurred_on": "2026-05-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-74",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-05-29",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-75",
+      "counterparty": "Ventas de mostrador",
+      "amount": "455.93",
+      "direction": "inflow",
+      "occurred_on": "2026-05-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-75",
+      "counterparty": "Operación diaria",
+      "amount": "184.13",
+      "direction": "outflow",
+      "occurred_on": "2026-05-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-76",
+      "counterparty": "Ventas de mostrador",
+      "amount": "480.20",
+      "direction": "inflow",
+      "occurred_on": "2026-05-31",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-76",
+      "counterparty": "Operación diaria",
+      "amount": "229.71",
+      "direction": "outflow",
+      "occurred_on": "2026-05-31",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-77",
+      "counterparty": "Ventas de mostrador",
+      "amount": "632.99",
+      "direction": "inflow",
+      "occurred_on": "2026-06-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-77",
+      "counterparty": "Operación diaria",
+      "amount": "241.27",
+      "direction": "outflow",
+      "occurred_on": "2026-06-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-78",
+      "counterparty": "Ventas de mostrador",
+      "amount": "401.82",
+      "direction": "inflow",
+      "occurred_on": "2026-06-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-78",
+      "counterparty": "Operación diaria",
+      "amount": "165.32",
+      "direction": "outflow",
+      "occurred_on": "2026-06-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-79",
+      "counterparty": "Ventas de mostrador",
+      "amount": "606.09",
+      "direction": "inflow",
+      "occurred_on": "2026-06-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-79",
+      "counterparty": "Operación diaria",
+      "amount": "156.57",
+      "direction": "outflow",
+      "occurred_on": "2026-06-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-79",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-06-03",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-80",
+      "counterparty": "Ventas de mostrador",
+      "amount": "603.35",
+      "direction": "inflow",
+      "occurred_on": "2026-06-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-80",
+      "counterparty": "Operación diaria",
+      "amount": "145.53",
+      "direction": "outflow",
+      "occurred_on": "2026-06-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-81",
+      "counterparty": "Ventas de mostrador",
+      "amount": "424.59",
+      "direction": "inflow",
+      "occurred_on": "2026-06-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-81",
+      "counterparty": "Operación diaria",
+      "amount": "195.57",
+      "direction": "outflow",
+      "occurred_on": "2026-06-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-82",
+      "counterparty": "Ventas de mostrador",
+      "amount": "350.39",
+      "direction": "inflow",
+      "occurred_on": "2026-06-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-82",
+      "counterparty": "Operación diaria",
+      "amount": "145.87",
+      "direction": "outflow",
+      "occurred_on": "2026-06-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-83",
+      "counterparty": "Ventas de mostrador",
+      "amount": "440.00",
+      "direction": "inflow",
+      "occurred_on": "2026-06-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-83",
+      "counterparty": "Operación diaria",
+      "amount": "197.57",
+      "direction": "outflow",
+      "occurred_on": "2026-06-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-84",
+      "counterparty": "Ventas de mostrador",
+      "amount": "479.26",
+      "direction": "inflow",
+      "occurred_on": "2026-06-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-84",
+      "counterparty": "Operación diaria",
+      "amount": "299.95",
+      "direction": "outflow",
+      "occurred_on": "2026-06-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-85",
+      "counterparty": "Ventas de mostrador",
+      "amount": "560.55",
+      "direction": "inflow",
+      "occurred_on": "2026-06-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-85",
+      "counterparty": "Operación diaria",
+      "amount": "184.21",
+      "direction": "outflow",
+      "occurred_on": "2026-06-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-86",
+      "counterparty": "Ventas de mostrador",
+      "amount": "412.57",
+      "direction": "inflow",
+      "occurred_on": "2026-06-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-86",
+      "counterparty": "Operación diaria",
+      "amount": "174.85",
+      "direction": "outflow",
+      "occurred_on": "2026-06-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-87",
+      "counterparty": "Ventas de mostrador",
+      "amount": "411.35",
+      "direction": "inflow",
+      "occurred_on": "2026-06-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-87",
+      "counterparty": "Operación diaria",
+      "amount": "224.29",
+      "direction": "outflow",
+      "occurred_on": "2026-06-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-88",
+      "counterparty": "Ventas de mostrador",
+      "amount": "345.08",
+      "direction": "inflow",
+      "occurred_on": "2026-06-12",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-88",
+      "counterparty": "Operación diaria",
+      "amount": "223.37",
+      "direction": "outflow",
+      "occurred_on": "2026-06-12",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-88",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-06-12",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-89",
+      "counterparty": "Ventas de mostrador",
+      "amount": "346.06",
+      "direction": "inflow",
+      "occurred_on": "2026-06-13",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-89",
+      "counterparty": "Operación diaria",
+      "amount": "153.12",
+      "direction": "outflow",
+      "occurred_on": "2026-06-13",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-90",
+      "counterparty": "Ventas de mostrador",
+      "amount": "542.66",
+      "direction": "inflow",
+      "occurred_on": "2026-06-14",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-90",
+      "counterparty": "Operación diaria",
+      "amount": "258.48",
+      "direction": "outflow",
+      "occurred_on": "2026-06-14",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-91",
+      "counterparty": "Ventas de mostrador",
+      "amount": "429.76",
+      "direction": "inflow",
+      "occurred_on": "2026-06-15",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-91",
+      "counterparty": "Operación diaria",
+      "amount": "195.46",
+      "direction": "outflow",
+      "occurred_on": "2026-06-15",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-92",
+      "counterparty": "Ventas de mostrador",
+      "amount": "622.78",
+      "direction": "inflow",
+      "occurred_on": "2026-06-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-92",
+      "counterparty": "Operación diaria",
+      "amount": "213.35",
+      "direction": "outflow",
+      "occurred_on": "2026-06-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-93",
+      "counterparty": "Ventas de mostrador",
+      "amount": "537.80",
+      "direction": "inflow",
+      "occurred_on": "2026-06-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-93",
+      "counterparty": "Operación diaria",
+      "amount": "295.04",
+      "direction": "outflow",
+      "occurred_on": "2026-06-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "reparacion-93",
+      "counterparty": "Reparación extraordinaria",
+      "amount": "2686.00",
+      "direction": "outflow",
+      "occurred_on": "2026-06-17",
+      "category": "mantenimiento",
+      "irregular": true,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-94",
+      "counterparty": "Ventas de mostrador",
+      "amount": "601.34",
+      "direction": "inflow",
+      "occurred_on": "2026-06-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-94",
+      "counterparty": "Operación diaria",
+      "amount": "235.82",
+      "direction": "outflow",
+      "occurred_on": "2026-06-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-95",
+      "counterparty": "Ventas de mostrador",
+      "amount": "287.96",
+      "direction": "inflow",
+      "occurred_on": "2026-06-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-95",
+      "counterparty": "Operación diaria",
+      "amount": "290.34",
+      "direction": "outflow",
+      "occurred_on": "2026-06-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-95",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-06-19",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-96",
+      "counterparty": "Ventas de mostrador",
+      "amount": "421.74",
+      "direction": "inflow",
+      "occurred_on": "2026-06-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-96",
+      "counterparty": "Operación diaria",
+      "amount": "161.84",
+      "direction": "outflow",
+      "occurred_on": "2026-06-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-97",
+      "counterparty": "Ventas de mostrador",
+      "amount": "410.27",
+      "direction": "inflow",
+      "occurred_on": "2026-06-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-97",
+      "counterparty": "Operación diaria",
+      "amount": "231.81",
+      "direction": "outflow",
+      "occurred_on": "2026-06-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-98",
+      "counterparty": "Ventas de mostrador",
+      "amount": "538.66",
+      "direction": "inflow",
+      "occurred_on": "2026-06-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-98",
+      "counterparty": "Operación diaria",
+      "amount": "299.63",
+      "direction": "outflow",
+      "occurred_on": "2026-06-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-99",
+      "counterparty": "Ventas de mostrador",
+      "amount": "597.56",
+      "direction": "inflow",
+      "occurred_on": "2026-06-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-99",
+      "counterparty": "Operación diaria",
+      "amount": "194.42",
+      "direction": "outflow",
+      "occurred_on": "2026-06-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-99",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-06-23",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-100",
+      "counterparty": "Ventas de mostrador",
+      "amount": "592.80",
+      "direction": "inflow",
+      "occurred_on": "2026-06-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-100",
+      "counterparty": "Operación diaria",
+      "amount": "284.63",
+      "direction": "outflow",
+      "occurred_on": "2026-06-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-101",
+      "counterparty": "Ventas de mostrador",
+      "amount": "548.53",
+      "direction": "inflow",
+      "occurred_on": "2026-06-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-101",
+      "counterparty": "Operación diaria",
+      "amount": "217.45",
+      "direction": "outflow",
+      "occurred_on": "2026-06-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-102",
+      "counterparty": "Ventas de mostrador",
+      "amount": "601.04",
+      "direction": "inflow",
+      "occurred_on": "2026-06-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-102",
+      "counterparty": "Operación diaria",
+      "amount": "273.59",
+      "direction": "outflow",
+      "occurred_on": "2026-06-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-102",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-06-26",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-103",
+      "counterparty": "Ventas de mostrador",
+      "amount": "425.41",
+      "direction": "inflow",
+      "occurred_on": "2026-06-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-103",
+      "counterparty": "Operación diaria",
+      "amount": "220.75",
+      "direction": "outflow",
+      "occurred_on": "2026-06-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-104",
+      "counterparty": "Ventas de mostrador",
+      "amount": "356.41",
+      "direction": "inflow",
+      "occurred_on": "2026-06-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-104",
+      "counterparty": "Operación diaria",
+      "amount": "165.75",
+      "direction": "outflow",
+      "occurred_on": "2026-06-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-105",
+      "counterparty": "Ventas de mostrador",
+      "amount": "353.32",
+      "direction": "inflow",
+      "occurred_on": "2026-06-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-105",
+      "counterparty": "Operación diaria",
+      "amount": "272.31",
+      "direction": "outflow",
+      "occurred_on": "2026-06-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-106",
+      "counterparty": "Ventas de mostrador",
+      "amount": "720.59",
+      "direction": "inflow",
+      "occurred_on": "2026-06-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-106",
+      "counterparty": "Operación diaria",
+      "amount": "274.94",
+      "direction": "outflow",
+      "occurred_on": "2026-06-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-107",
+      "counterparty": "Ventas de mostrador",
+      "amount": "716.41",
+      "direction": "inflow",
+      "occurred_on": "2026-07-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-107",
+      "counterparty": "Operación diaria",
+      "amount": "147.49",
+      "direction": "outflow",
+      "occurred_on": "2026-07-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-108",
+      "counterparty": "Ventas de mostrador",
+      "amount": "546.54",
+      "direction": "inflow",
+      "occurred_on": "2026-07-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-108",
+      "counterparty": "Operación diaria",
+      "amount": "209.16",
+      "direction": "outflow",
+      "occurred_on": "2026-07-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-109",
+      "counterparty": "Ventas de mostrador",
+      "amount": "382.17",
+      "direction": "inflow",
+      "occurred_on": "2026-07-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-109",
+      "counterparty": "Operación diaria",
+      "amount": "228.11",
+      "direction": "outflow",
+      "occurred_on": "2026-07-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-109",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-07-03",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-110",
+      "counterparty": "Ventas de mostrador",
+      "amount": "349.17",
+      "direction": "inflow",
+      "occurred_on": "2026-07-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-110",
+      "counterparty": "Operación diaria",
+      "amount": "153.04",
+      "direction": "outflow",
+      "occurred_on": "2026-07-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-111",
+      "counterparty": "Ventas de mostrador",
+      "amount": "292.54",
+      "direction": "inflow",
+      "occurred_on": "2026-07-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-111",
+      "counterparty": "Operación diaria",
+      "amount": "211.88",
+      "direction": "outflow",
+      "occurred_on": "2026-07-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-112",
+      "counterparty": "Ventas de mostrador",
+      "amount": "465.52",
+      "direction": "inflow",
+      "occurred_on": "2026-07-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-112",
+      "counterparty": "Operación diaria",
+      "amount": "276.33",
+      "direction": "outflow",
+      "occurred_on": "2026-07-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-113",
+      "counterparty": "Ventas de mostrador",
+      "amount": "524.12",
+      "direction": "inflow",
+      "occurred_on": "2026-07-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-113",
+      "counterparty": "Operación diaria",
+      "amount": "298.94",
+      "direction": "outflow",
+      "occurred_on": "2026-07-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-114",
+      "counterparty": "Ventas de mostrador",
+      "amount": "478.28",
+      "direction": "inflow",
+      "occurred_on": "2026-07-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-114",
+      "counterparty": "Operación diaria",
+      "amount": "168.85",
+      "direction": "outflow",
+      "occurred_on": "2026-07-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-115",
+      "counterparty": "Ventas de mostrador",
+      "amount": "369.02",
+      "direction": "inflow",
+      "occurred_on": "2026-07-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-115",
+      "counterparty": "Operación diaria",
+      "amount": "247.79",
+      "direction": "outflow",
+      "occurred_on": "2026-07-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-116",
+      "counterparty": "Ventas de mostrador",
+      "amount": "526.96",
+      "direction": "inflow",
+      "occurred_on": "2026-07-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-116",
+      "counterparty": "Operación diaria",
+      "amount": "227.76",
+      "direction": "outflow",
+      "occurred_on": "2026-07-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-116",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-07-10",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-117",
+      "counterparty": "Ventas de mostrador",
+      "amount": "407.57",
+      "direction": "inflow",
+      "occurred_on": "2026-07-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-117",
+      "counterparty": "Operación diaria",
+      "amount": "188.59",
+      "direction": "outflow",
+      "occurred_on": "2026-07-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-118",
+      "counterparty": "Ventas de mostrador",
+      "amount": "471.09",
+      "direction": "inflow",
+      "occurred_on": "2026-07-12",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-118",
+      "counterparty": "Operación diaria",
+      "amount": "273.97",
+      "direction": "outflow",
+      "occurred_on": "2026-07-12",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-119",
+      "counterparty": "Ventas de mostrador",
+      "amount": "475.88",
+      "direction": "inflow",
+      "occurred_on": "2026-07-13",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-119",
+      "counterparty": "Operación diaria",
+      "amount": "180.42",
+      "direction": "outflow",
+      "occurred_on": "2026-07-13",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-120",
+      "counterparty": "Ventas de mostrador",
+      "amount": "425.81",
+      "direction": "inflow",
+      "occurred_on": "2026-07-14",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-120",
+      "counterparty": "Operación diaria",
+      "amount": "206.86",
+      "direction": "outflow",
+      "occurred_on": "2026-07-14",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-121",
+      "counterparty": "Ventas de mostrador",
+      "amount": "587.12",
+      "direction": "inflow",
+      "occurred_on": "2026-07-15",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-121",
+      "counterparty": "Operación diaria",
+      "amount": "159.67",
+      "direction": "outflow",
+      "occurred_on": "2026-07-15",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-122",
+      "counterparty": "Ventas de mostrador",
+      "amount": "588.12",
+      "direction": "inflow",
+      "occurred_on": "2026-07-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-122",
+      "counterparty": "Operación diaria",
+      "amount": "158.64",
+      "direction": "outflow",
+      "occurred_on": "2026-07-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-123",
+      "counterparty": "Ventas de mostrador",
+      "amount": "371.34",
+      "direction": "inflow",
+      "occurred_on": "2026-07-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-123",
+      "counterparty": "Operación diaria",
+      "amount": "267.12",
+      "direction": "outflow",
+      "occurred_on": "2026-07-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-124",
+      "counterparty": "Ventas de mostrador",
+      "amount": "326.61",
+      "direction": "inflow",
+      "occurred_on": "2026-07-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-124",
+      "counterparty": "Operación diaria",
+      "amount": "258.43",
+      "direction": "outflow",
+      "occurred_on": "2026-07-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-125",
+      "counterparty": "Ventas de mostrador",
+      "amount": "412.78",
+      "direction": "inflow",
+      "occurred_on": "2026-07-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-125",
+      "counterparty": "Operación diaria",
+      "amount": "192.91",
+      "direction": "outflow",
+      "occurred_on": "2026-07-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-125",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-07-19",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-126",
+      "counterparty": "Ventas de mostrador",
+      "amount": "414.67",
+      "direction": "inflow",
+      "occurred_on": "2026-07-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-126",
+      "counterparty": "Operación diaria",
+      "amount": "140.97",
+      "direction": "outflow",
+      "occurred_on": "2026-07-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-127",
+      "counterparty": "Ventas de mostrador",
+      "amount": "494.97",
+      "direction": "inflow",
+      "occurred_on": "2026-07-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-127",
+      "counterparty": "Operación diaria",
+      "amount": "271.69",
+      "direction": "outflow",
+      "occurred_on": "2026-07-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-128",
+      "counterparty": "Ventas de mostrador",
+      "amount": "682.72",
+      "direction": "inflow",
+      "occurred_on": "2026-07-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-128",
+      "counterparty": "Operación diaria",
+      "amount": "200.80",
+      "direction": "outflow",
+      "occurred_on": "2026-07-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-129",
+      "counterparty": "Ventas de mostrador",
+      "amount": "497.62",
+      "direction": "inflow",
+      "occurred_on": "2026-07-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-129",
+      "counterparty": "Operación diaria",
+      "amount": "148.82",
+      "direction": "outflow",
+      "occurred_on": "2026-07-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-129",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-07-23",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-130",
+      "counterparty": "Ventas de mostrador",
+      "amount": "305.80",
+      "direction": "inflow",
+      "occurred_on": "2026-07-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-130",
+      "counterparty": "Operación diaria",
+      "amount": "242.61",
+      "direction": "outflow",
+      "occurred_on": "2026-07-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-130",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-07-24",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-131",
+      "counterparty": "Ventas de mostrador",
+      "amount": "384.74",
+      "direction": "inflow",
+      "occurred_on": "2026-07-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-131",
+      "counterparty": "Operación diaria",
+      "amount": "149.18",
+      "direction": "outflow",
+      "occurred_on": "2026-07-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-132",
+      "counterparty": "Ventas de mostrador",
+      "amount": "500.17",
+      "direction": "inflow",
+      "occurred_on": "2026-07-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-132",
+      "counterparty": "Operación diaria",
+      "amount": "207.93",
+      "direction": "outflow",
+      "occurred_on": "2026-07-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-133",
+      "counterparty": "Ventas de mostrador",
+      "amount": "579.54",
+      "direction": "inflow",
+      "occurred_on": "2026-07-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-133",
+      "counterparty": "Operación diaria",
+      "amount": "214.28",
+      "direction": "outflow",
+      "occurred_on": "2026-07-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-134",
+      "counterparty": "Ventas de mostrador",
+      "amount": "577.79",
+      "direction": "inflow",
+      "occurred_on": "2026-07-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-134",
+      "counterparty": "Operación diaria",
+      "amount": "159.09",
+      "direction": "outflow",
+      "occurred_on": "2026-07-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "reparacion-134",
+      "counterparty": "Reparación extraordinaria",
+      "amount": "2901.00",
+      "direction": "outflow",
+      "occurred_on": "2026-07-28",
+      "category": "mantenimiento",
+      "irregular": true,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-135",
+      "counterparty": "Ventas de mostrador",
+      "amount": "652.75",
+      "direction": "inflow",
+      "occurred_on": "2026-07-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-135",
+      "counterparty": "Operación diaria",
+      "amount": "269.96",
+      "direction": "outflow",
+      "occurred_on": "2026-07-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-136",
+      "counterparty": "Ventas de mostrador",
+      "amount": "541.87",
+      "direction": "inflow",
+      "occurred_on": "2026-07-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-136",
+      "counterparty": "Operación diaria",
+      "amount": "230.20",
+      "direction": "outflow",
+      "occurred_on": "2026-07-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-137",
+      "counterparty": "Ventas de mostrador",
+      "amount": "418.38",
+      "direction": "inflow",
+      "occurred_on": "2026-07-31",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-137",
+      "counterparty": "Operación diaria",
+      "amount": "219.63",
+      "direction": "outflow",
+      "occurred_on": "2026-07-31",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-138",
+      "counterparty": "Ventas de mostrador",
+      "amount": "345.33",
+      "direction": "inflow",
+      "occurred_on": "2026-08-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-138",
+      "counterparty": "Operación diaria",
+      "amount": "286.30",
+      "direction": "outflow",
+      "occurred_on": "2026-08-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-139",
+      "counterparty": "Ventas de mostrador",
+      "amount": "526.52",
+      "direction": "inflow",
+      "occurred_on": "2026-08-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-139",
+      "counterparty": "Operación diaria",
+      "amount": "249.03",
+      "direction": "outflow",
+      "occurred_on": "2026-08-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-139",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-08-02",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-140",
+      "counterparty": "Ventas de mostrador",
+      "amount": "369.46",
+      "direction": "inflow",
+      "occurred_on": "2026-08-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-140",
+      "counterparty": "Operación diaria",
+      "amount": "189.51",
+      "direction": "outflow",
+      "occurred_on": "2026-08-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-141",
+      "counterparty": "Ventas de mostrador",
+      "amount": "587.52",
+      "direction": "inflow",
+      "occurred_on": "2026-08-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-141",
+      "counterparty": "Operación diaria",
+      "amount": "156.11",
+      "direction": "outflow",
+      "occurred_on": "2026-08-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-142",
+      "counterparty": "Ventas de mostrador",
+      "amount": "629.65",
+      "direction": "inflow",
+      "occurred_on": "2026-08-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-142",
+      "counterparty": "Operación diaria",
+      "amount": "195.84",
+      "direction": "outflow",
+      "occurred_on": "2026-08-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-143",
+      "counterparty": "Ventas de mostrador",
+      "amount": "563.82",
+      "direction": "inflow",
+      "occurred_on": "2026-08-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-143",
+      "counterparty": "Operación diaria",
+      "amount": "290.67",
+      "direction": "outflow",
+      "occurred_on": "2026-08-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-144",
+      "counterparty": "Ventas de mostrador",
+      "amount": "507.19",
+      "direction": "inflow",
+      "occurred_on": "2026-08-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-144",
+      "counterparty": "Operación diaria",
+      "amount": "182.69",
+      "direction": "outflow",
+      "occurred_on": "2026-08-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-144",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-08-07",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-145",
+      "counterparty": "Ventas de mostrador",
+      "amount": "402.71",
+      "direction": "inflow",
+      "occurred_on": "2026-08-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-145",
+      "counterparty": "Operación diaria",
+      "amount": "234.74",
+      "direction": "outflow",
+      "occurred_on": "2026-08-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-146",
+      "counterparty": "Ventas de mostrador",
+      "amount": "437.60",
+      "direction": "inflow",
+      "occurred_on": "2026-08-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-146",
+      "counterparty": "Operación diaria",
+      "amount": "276.50",
+      "direction": "outflow",
+      "occurred_on": "2026-08-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-147",
+      "counterparty": "Ventas de mostrador",
+      "amount": "616.77",
+      "direction": "inflow",
+      "occurred_on": "2026-08-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-147",
+      "counterparty": "Operación diaria",
+      "amount": "263.02",
+      "direction": "outflow",
+      "occurred_on": "2026-08-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-148",
+      "counterparty": "Ventas de mostrador",
+      "amount": "695.28",
+      "direction": "inflow",
+      "occurred_on": "2026-08-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-148",
+      "counterparty": "Operación diaria",
+      "amount": "226.62",
+      "direction": "outflow",
+      "occurred_on": "2026-08-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-149",
+      "counterparty": "Ventas de mostrador",
+      "amount": "581.29",
+      "direction": "inflow",
+      "occurred_on": "2026-08-12",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-149",
+      "counterparty": "Operación diaria",
+      "amount": "200.72",
+      "direction": "outflow",
+      "occurred_on": "2026-08-12",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-150",
+      "counterparty": "Ventas de mostrador",
+      "amount": "512.06",
+      "direction": "inflow",
+      "occurred_on": "2026-08-13",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-150",
+      "counterparty": "Operación diaria",
+      "amount": "288.86",
+      "direction": "outflow",
+      "occurred_on": "2026-08-13",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-151",
+      "counterparty": "Ventas de mostrador",
+      "amount": "625.61",
+      "direction": "inflow",
+      "occurred_on": "2026-08-14",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-151",
+      "counterparty": "Operación diaria",
+      "amount": "228.30",
+      "direction": "outflow",
+      "occurred_on": "2026-08-14",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-152",
+      "counterparty": "Ventas de mostrador",
+      "amount": "567.96",
+      "direction": "inflow",
+      "occurred_on": "2026-08-15",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-152",
+      "counterparty": "Operación diaria",
+      "amount": "264.64",
+      "direction": "outflow",
+      "occurred_on": "2026-08-15",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-153",
+      "counterparty": "Ventas de mostrador",
+      "amount": "419.30",
+      "direction": "inflow",
+      "occurred_on": "2026-08-16",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-153",
+      "counterparty": "Operación diaria",
+      "amount": "194.32",
+      "direction": "outflow",
+      "occurred_on": "2026-08-16",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-154",
+      "counterparty": "Ventas de mostrador",
+      "amount": "620.65",
+      "direction": "inflow",
+      "occurred_on": "2026-08-17",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-154",
+      "counterparty": "Operación diaria",
+      "amount": "209.54",
+      "direction": "outflow",
+      "occurred_on": "2026-08-17",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-155",
+      "counterparty": "Ventas de mostrador",
+      "amount": "544.25",
+      "direction": "inflow",
+      "occurred_on": "2026-08-18",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-155",
+      "counterparty": "Operación diaria",
+      "amount": "269.62",
+      "direction": "outflow",
+      "occurred_on": "2026-08-18",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "renta-155",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "occurred_on": "2026-08-18",
+      "category": "renta",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-156",
+      "counterparty": "Ventas de mostrador",
+      "amount": "729.60",
+      "direction": "inflow",
+      "occurred_on": "2026-08-19",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-156",
+      "counterparty": "Operación diaria",
+      "amount": "296.46",
+      "direction": "outflow",
+      "occurred_on": "2026-08-19",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-157",
+      "counterparty": "Ventas de mostrador",
+      "amount": "601.26",
+      "direction": "inflow",
+      "occurred_on": "2026-08-20",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-157",
+      "counterparty": "Operación diaria",
+      "amount": "238.04",
+      "direction": "outflow",
+      "occurred_on": "2026-08-20",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-158",
+      "counterparty": "Ventas de mostrador",
+      "amount": "362.71",
+      "direction": "inflow",
+      "occurred_on": "2026-08-21",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-158",
+      "counterparty": "Operación diaria",
+      "amount": "190.50",
+      "direction": "outflow",
+      "occurred_on": "2026-08-21",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-158",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-08-21",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-159",
+      "counterparty": "Ventas de mostrador",
+      "amount": "406.20",
+      "direction": "inflow",
+      "occurred_on": "2026-08-22",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-159",
+      "counterparty": "Operación diaria",
+      "amount": "261.78",
+      "direction": "outflow",
+      "occurred_on": "2026-08-22",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "cliente-159",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-08-22",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-160",
+      "counterparty": "Ventas de mostrador",
+      "amount": "399.75",
+      "direction": "inflow",
+      "occurred_on": "2026-08-23",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-160",
+      "counterparty": "Operación diaria",
+      "amount": "178.12",
+      "direction": "outflow",
+      "occurred_on": "2026-08-23",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-161",
+      "counterparty": "Ventas de mostrador",
+      "amount": "573.10",
+      "direction": "inflow",
+      "occurred_on": "2026-08-24",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-161",
+      "counterparty": "Operación diaria",
+      "amount": "145.50",
+      "direction": "outflow",
+      "occurred_on": "2026-08-24",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-162",
+      "counterparty": "Ventas de mostrador",
+      "amount": "457.39",
+      "direction": "inflow",
+      "occurred_on": "2026-08-25",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-162",
+      "counterparty": "Operación diaria",
+      "amount": "152.76",
+      "direction": "outflow",
+      "occurred_on": "2026-08-25",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-163",
+      "counterparty": "Ventas de mostrador",
+      "amount": "588.98",
+      "direction": "inflow",
+      "occurred_on": "2026-08-26",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-163",
+      "counterparty": "Operación diaria",
+      "amount": "268.18",
+      "direction": "outflow",
+      "occurred_on": "2026-08-26",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-164",
+      "counterparty": "Ventas de mostrador",
+      "amount": "576.62",
+      "direction": "inflow",
+      "occurred_on": "2026-08-27",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-164",
+      "counterparty": "Operación diaria",
+      "amount": "171.21",
+      "direction": "outflow",
+      "occurred_on": "2026-08-27",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-165",
+      "counterparty": "Ventas de mostrador",
+      "amount": "594.46",
+      "direction": "inflow",
+      "occurred_on": "2026-08-28",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-165",
+      "counterparty": "Operación diaria",
+      "amount": "209.17",
+      "direction": "outflow",
+      "occurred_on": "2026-08-28",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-166",
+      "counterparty": "Ventas de mostrador",
+      "amount": "504.46",
+      "direction": "inflow",
+      "occurred_on": "2026-08-29",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-166",
+      "counterparty": "Operación diaria",
+      "amount": "253.49",
+      "direction": "outflow",
+      "occurred_on": "2026-08-29",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-167",
+      "counterparty": "Ventas de mostrador",
+      "amount": "620.21",
+      "direction": "inflow",
+      "occurred_on": "2026-08-30",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-167",
+      "counterparty": "Operación diaria",
+      "amount": "252.66",
+      "direction": "outflow",
+      "occurred_on": "2026-08-30",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-168",
+      "counterparty": "Ventas de mostrador",
+      "amount": "498.99",
+      "direction": "inflow",
+      "occurred_on": "2026-08-31",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-168",
+      "counterparty": "Operación diaria",
+      "amount": "184.77",
+      "direction": "outflow",
+      "occurred_on": "2026-08-31",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-169",
+      "counterparty": "Ventas de mostrador",
+      "amount": "604.25",
+      "direction": "inflow",
+      "occurred_on": "2026-09-01",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-169",
+      "counterparty": "Operación diaria",
+      "amount": "185.42",
+      "direction": "outflow",
+      "occurred_on": "2026-09-01",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "otro-169",
+      "counterparty": "Cliente secundario",
+      "amount": "7500.00",
+      "direction": "inflow",
+      "occurred_on": "2026-09-01",
+      "category": "cobros",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-170",
+      "counterparty": "Ventas de mostrador",
+      "amount": "663.20",
+      "direction": "inflow",
+      "occurred_on": "2026-09-02",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-170",
+      "counterparty": "Operación diaria",
+      "amount": "286.92",
+      "direction": "outflow",
+      "occurred_on": "2026-09-02",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-171",
+      "counterparty": "Ventas de mostrador",
+      "amount": "520.75",
+      "direction": "inflow",
+      "occurred_on": "2026-09-03",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-171",
+      "counterparty": "Operación diaria",
+      "amount": "280.83",
+      "direction": "outflow",
+      "occurred_on": "2026-09-03",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-172",
+      "counterparty": "Ventas de mostrador",
+      "amount": "454.88",
+      "direction": "inflow",
+      "occurred_on": "2026-09-04",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-172",
+      "counterparty": "Operación diaria",
+      "amount": "167.00",
+      "direction": "outflow",
+      "occurred_on": "2026-09-04",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "nomina-172",
+      "counterparty": "Nómina",
+      "amount": "8500.00",
+      "direction": "outflow",
+      "occurred_on": "2026-09-04",
+      "category": "nomina",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-173",
+      "counterparty": "Ventas de mostrador",
+      "amount": "483.64",
+      "direction": "inflow",
+      "occurred_on": "2026-09-05",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-173",
+      "counterparty": "Operación diaria",
+      "amount": "163.13",
+      "direction": "outflow",
+      "occurred_on": "2026-09-05",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-174",
+      "counterparty": "Ventas de mostrador",
+      "amount": "333.16",
+      "direction": "inflow",
+      "occurred_on": "2026-09-06",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-174",
+      "counterparty": "Operación diaria",
+      "amount": "296.69",
+      "direction": "outflow",
+      "occurred_on": "2026-09-06",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-175",
+      "counterparty": "Ventas de mostrador",
+      "amount": "481.04",
+      "direction": "inflow",
+      "occurred_on": "2026-09-07",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-175",
+      "counterparty": "Operación diaria",
+      "amount": "239.01",
+      "direction": "outflow",
+      "occurred_on": "2026-09-07",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "reparacion-175",
+      "counterparty": "Reparación extraordinaria",
+      "amount": "2157.00",
+      "direction": "outflow",
+      "occurred_on": "2026-09-07",
+      "category": "mantenimiento",
+      "irregular": true,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-176",
+      "counterparty": "Ventas de mostrador",
+      "amount": "613.83",
+      "direction": "inflow",
+      "occurred_on": "2026-09-08",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-176",
+      "counterparty": "Operación diaria",
+      "amount": "169.60",
+      "direction": "outflow",
+      "occurred_on": "2026-09-08",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-177",
+      "counterparty": "Ventas de mostrador",
+      "amount": "626.25",
+      "direction": "inflow",
+      "occurred_on": "2026-09-09",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-177",
+      "counterparty": "Operación diaria",
+      "amount": "184.49",
+      "direction": "outflow",
+      "occurred_on": "2026-09-09",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-178",
+      "counterparty": "Ventas de mostrador",
+      "amount": "590.18",
+      "direction": "inflow",
+      "occurred_on": "2026-09-10",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-178",
+      "counterparty": "Operación diaria",
+      "amount": "166.70",
+      "direction": "outflow",
+      "occurred_on": "2026-09-10",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "venta-179",
+      "counterparty": "Ventas de mostrador",
+      "amount": "484.46",
+      "direction": "inflow",
+      "occurred_on": "2026-09-11",
+      "category": "ventas",
+      "irregular": false,
+      "currency": "MXN"
+    },
+    {
+      "id": "gasto-179",
+      "counterparty": "Operación diaria",
+      "amount": "232.50",
+      "direction": "outflow",
+      "occurred_on": "2026-09-11",
+      "category": "operacion",
+      "irregular": false,
+      "currency": "MXN"
+    }
+  ],
+  "config": {
+    "start_date": "2026-09-12",
+    "history_start": "2026-03-16",
+    "history_end": "2026-09-11",
+    "history_complete": true,
+    "days": 30,
+    "simulations": 10000,
+    "seed": 20260912,
+    "currency": "MXN",
+    "model": "auto",
+    "seasonal_period": 7,
+    "candidate_periods": [
+      7,
+      14,
+      15,
+      30,
+      60,
+      90
+    ],
+    "recurrence_weights": [
+      0.4,
+      0.3,
+      0.3
+    ],
+    "recurrence_epsilon": 0.18,
+    "max_name_distance": 0.35,
+    "acf_threshold": 0.5,
+    "acf_adjusted": false,
+    "min_recurrence_count": 3,
+    "max_stable_cv": 0.2,
+    "bootstrap_block": 7,
+    "auto_methods": [
+      "seasonal_mean",
+      "stl",
+      "holt_winters",
+      "sarima"
+    ],
+    "confidence": 0.95,
+    "alpha": 0.05,
+    "constraint": "any_day",
+    "chance_method": "wilson_upper",
+    "probability_confidence": 0.95,
+    "max_actions": 2,
+    "max_candidates": 128,
+    "coverage_days": 30,
+    "daily_cogs": "220.00",
+    "delay_cycle_days": 30,
+    "scenario_sample_paths": 5
+  },
+  "opening_balance": "17000",
+  "liquidity_threshold": "8000",
+  "planned_events": [
+    {
+      "id": "factura-principal",
+      "counterparty": "Cliente principal",
+      "amount": "14500.00",
+      "direction": "inflow",
+      "expected_date": "2026-09-21",
+      "category": "cobros",
+      "currency": "MXN",
+      "collection_probability": 0.98,
+      "delay_samples": [
+        0
+      ],
+      "client_id": "cliente principal",
+      "history_series_key": "inflow|cobros|cliente principal",
+      "replaces_on": null,
+      "amount_samples": [],
+      "source": "agenda",
+      "risk_anchor": null,
+      "additional_to_history": false
+    },
+    {
+      "id": "renta-pendiente",
+      "counterparty": "Arrendador",
+      "amount": "6000.00",
+      "direction": "outflow",
+      "expected_date": "2026-09-17",
+      "category": "renta",
+      "currency": "MXN",
+      "collection_probability": 1.0,
+      "delay_samples": [
+        0
+      ],
+      "client_id": null,
+      "history_series_key": "outflow|renta|arrendador",
+      "replaces_on": null,
+      "amount_samples": [],
+      "source": "agenda",
+      "risk_anchor": null,
+      "additional_to_history": false
+    }
+  ],
+  "candidate_actions": [
+    {
+      "id": "credito-10000",
+      "type": "draw_credit",
+      "target_event_id": null,
+      "days": 0,
+      "amount": "10000.00",
+      "financial_cost": "120.00",
+      "operational_impact": 2,
+      "effective_date": "2026-09-12",
+      "repayment_date": "2026-11-11",
+      "cost_date": null,
+      "exclusive_group": "linea-demo"
+    },
+    {
+      "id": "credito-20000",
+      "type": "draw_credit",
+      "target_event_id": null,
+      "days": 0,
+      "amount": "20000.00",
+      "financial_cost": "220.00",
+      "operational_impact": 3,
+      "effective_date": "2026-09-12",
+      "repayment_date": "2026-11-11",
+      "cost_date": null,
+      "exclusive_group": "linea-demo"
+    },
+    {
+      "id": "diferir-renta",
+      "type": "defer_payable",
+      "target_event_id": "renta-pendiente",
+      "days": 7,
+      "amount": "0.00",
+      "financial_cost": "70.00",
+      "operational_impact": 2,
+      "effective_date": null,
+      "repayment_date": null,
+      "cost_date": null,
+      "exclusive_group": null
+    },
+    {
+      "id": "acelerar-cobro",
+      "type": "accelerate_receivable",
+      "target_event_id": "factura-principal",
+      "days": 7,
+      "amount": "0.00",
+      "financial_cost": "180.00",
+      "operational_impact": 1,
+      "effective_date": null,
+      "repayment_date": null,
+      "cost_date": null,
+      "exclusive_group": null
+    }
+  ],
+  "scenario_actions": [
+    {
+      "id": "retraso-7",
+      "type": "delay_receivable",
+      "target_event_id": "factura-principal",
+      "days": 7,
+      "amount": "0.00",
+      "financial_cost": "0.00",
+      "operational_impact": 0,
+      "effective_date": null,
+      "repayment_date": null,
+      "cost_date": null,
+      "exclusive_group": null
+    }
+  ],
+  "delay_history": {
+    "client_ids": [
+      "cliente principal",
+      "cliente secundario"
+    ],
+    "observations": [
+      [
+        9,
+        9
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        12,
+        11
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        1,
+        2
+      ]
+    ]
+  }
+}

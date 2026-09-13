@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<script src="/static/js/session.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel empresarial C1 SuperPro">
+  <title>C1 Tesorería 6.0 — Panel empresarial</title>
+  <link rel="stylesheet" href="/static/css/styles.css?v=4">
+</head>
+<body class="app-page">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <a class="brand brand-on-dark sidebar-brand" href="/dashboard" aria-label="Inicio de C1 SuperPro">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy"><strong>C1</strong> SuperPro</span>
+      </a>
+      <p class="sidebar-label">Banca empresarial</p>
+      <nav class="side-nav"><a class="side-nav-item featured" href="/predictions"><span class="nav-icon">↗</span><span>Predicción y compras</span></a><a class="side-nav-item" href="/calendar"><span class="nav-icon">▦</span><span>Calendario financiero</span></a><a class="side-nav-item" href="/workspace"><span class="nav-icon">≡</span><span>Documentos e historial</span></a>
+        <a class="side-nav-item active" href="/dashboard">
+          <span class="nav-icon" aria-hidden="true">⌂</span><span>Resumen</span>
+        </a>
+        <a class="side-nav-item featured" href="/treasury">
+          <span class="nav-icon" aria-hidden="true">⌁</span><span>Planificador de flujo de caja</span>
+          <span class="nav-pill">MVP</span>
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="logoutButton" class="side-nav-item" type="button">
+          <span class="nav-icon" aria-hidden="true">→</span><span>Salir de la demostración</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu-button" type="button" aria-label="Abrir navegación">☰</button>
+        <h1>Bienvenido de nuevo</h1>
+      </header><div style="margin:12px 20px;padding:12px;background:#eef4fe;border:1px solid #d2dff4;border-radius:8px"><a href="/workspace" style="font-weight:700">Documentos, historial e informes de mi empresa →</a> <span style="margin-left:14px">Versión 6.0.0-web-integrada · los saldos del panel demo son sintéticos</span></div>
+
+      <section class="content-container dashboard-content">
+        <div class="prototype-banner" role="note">
+          <strong>Prototipo de hackathon</strong>
+          <span>Documentos e historial y el Planificador están disponibles. Todos los datos de las cuentas son sintéticos.</span>
+        </div>
+
+        <section aria-labelledby="overview-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow text-blue">Resumen financiero</p>
+              <h2 id="overview-title">Tu empresa de un vistazo</h2>
+            </div>
+            <span class="last-updated">Actualizado hace un momento</span>
+          </div>
+
+          <div class="metric-grid dashboard-metrics">
+            <article class="metric-card account-card">
+              <div class="metric-card-head">
+                <span>Cuenta operativa</span><span class="account-dots">•••• 4821</span>
+              </div>
+              <strong class="metric-value">$50,000.00</strong>
+              <span class="metric-caption">Saldo disponible</span>
+            </article>
+            <article class="metric-card">
+              <div class="metric-card-head"><span>Entradas · 30 días</span><span class="trend-positive">+2</span></div>
+              <strong class="metric-value">$27,000.00</strong>
+              <span class="metric-caption">Cobros esperados</span>
+            </article>
+            <article class="metric-card">
+              <div class="metric-card-head"><span>Salidas · 30 días</span><span>4 movimientos</span></div>
+              <strong class="metric-value">$50,000.00</strong>
+              <span class="metric-caption">Obligaciones programadas</span>
+            </article>
+            <article class="metric-card status-card-safe">
+              <div class="metric-card-head"><span>Estado de liquidez</span><span class="status-dot"></span></div>
+              <strong class="metric-value metric-value-small">Requiere revisión</strong>
+              <span class="metric-caption">Prueba el retraso de un pago de cliente</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="planner-promo" aria-labelledby="planner-title">
+          <div class="planner-promo-copy">
+            <span class="feature-label">Nuevo · Inteligencia de tesorería</span>
+            <h2 id="planner-title">Convierte tus próximos 30 días en un plan de caja, compra y calendario.</h2>
+            <p>
+              Proyecta la liquidez, decide qué mercancía cabe en tu presupuesto conservador
+              y ubica cobros, pagos, órdenes y entregas en una sola agenda.
+            </p>
+            <div class="toolbar"><a class="primary-button inline-button" href="/predictions">Abrir predicción y compras</a><a class="secondary-button inline-button" href="/calendar">Ver calendario</a></div>
+          </div>
+          <div class="mini-forecast-card" aria-label="Vista previa del pronóstico">
+            <div class="mini-card-head"><span>Pronóstico conservador</span><strong>30 días</strong></div>
+            <svg viewBox="0 0 460 190" role="img" aria-label="Gráfica preliminar que muestra una caída de liquidez y su corrección">
+              <defs>
+                <linearGradient id="previewFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#3977c9" stop-opacity="0.28"/>
+                  <stop offset="1" stop-color="#3977c9" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line x1="24" y1="135" x2="438" y2="135" class="preview-threshold"/>
+              <path d="M24 45 C95 48 115 76 150 75 S205 130 250 145 S300 72 340 86 S390 99 438 82 L438 168 L24 168 Z" fill="url(#previewFill)"/>
+              <path d="M24 45 C95 48 115 76 150 75 S205 130 250 145 S300 72 340 86 S390 99 438 82" class="preview-line"/>
+              <circle cx="250" cy="145" r="6" class="preview-risk-point"/>
+            </svg>
+            <div class="mini-card-foot"><span><i class="legend-dot blue"></i>Saldo proyectado</span><span><i class="legend-line red"></i>Umbral de seguridad</span></div>
+          </div>
+        </section>
+
+        <section aria-labelledby="activity-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow text-blue">Próximos movimientos</p>
+              <h2 id="activity-title">Eventos de flujo de caja</h2>
+            </div>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-icon inflow">↓</span>
+              <div><strong>Cliente principal</strong><small>Cobro esperado · 90% de confianza</small></div>
+              <span class="activity-date">En 7 días</span><strong class="money-positive">+$18,000</strong>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon outflow">↑</span>
+              <div><strong>Proveedor de empaques</strong><small>Pago programado a proveedor</small></div>
+              <span class="activity-date">En 11 días</span><strong>−$7,000</strong>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon outflow">↑</span>
+              <div><strong>Nómina</strong><small>Pago recurrente de nómina</small></div>
+              <span class="activity-date">En 12 días</span><strong>−$26,000</strong>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/dashboard.js?v=4" defer></script>
+</body>
+</html>

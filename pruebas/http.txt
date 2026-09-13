@@ -1,0 +1,2 @@
+HTTP REAL con Uvicorn: health, registro/cookie, entrada demo, cálculo real, guardado y lectura: OK.
+SQLite temporal. Sin llamadas a Google ni conexión SQL Server.
