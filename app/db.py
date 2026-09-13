@@ -1,5 +1,5 @@
-"""SQL Server + SQLAlchemy. SQLite SOLO es una opción explícita de pruebas.
-Nunca cambia de motor al fallar SQL Server. No registra cadenas con contraseñas.
+"""SQL Server, PostgreSQL y SQLite de pruebas mediante SQLAlchemy.
+Nunca cambia de motor al fallar una conexión. No registra cadenas con contraseñas.
 """
 from __future__ import annotations
 from datetime import datetime, timezone
@@ -12,7 +12,7 @@ from pathlib import Path
 from sqlalchemy import (create_engine, Column, String, Unicode, UnicodeText, Numeric,
                         Date, DateTime, LargeBinary, ForeignKey, Integer, UniqueConstraint,
                         CheckConstraint, event, text)
-from sqlalchemy.engine import URL
+from sqlalchemy.engine import URL, make_url
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from .config import read_env, PROJECT_DIR
 
@@ -195,8 +195,23 @@ def build_url():
     if backend == 'sqlite':
         path = setting('SQLITE_PATH', str(PROJECT_DIR / 'local-demo.db'))
         return URL.create('sqlite', database=path)
+    if backend == 'postgres':
+        database_url = setting('DATABASE_URL')
+        if not database_url:
+            raise RuntimeError('Completa DATABASE_URL para PostgreSQL.')
+        if database_url.startswith('postgresql://'):
+            database_url = 'postgresql+psycopg://' + database_url.removeprefix('postgresql://')
+        elif database_url.startswith('postgres://'):
+            database_url = 'postgresql+psycopg://' + database_url.removeprefix('postgres://')
+        try:
+            url = make_url(database_url)
+        except Exception as exc:
+            raise RuntimeError('DATABASE_URL no tiene un formato PostgreSQL válido.') from exc
+        if url.drivername != 'postgresql+psycopg':
+            raise RuntimeError('DATABASE_URL debe usar PostgreSQL.')
+        return url
     if backend != 'mssql':
-        raise RuntimeError('DB_BACKEND debe ser mssql o sqlite. No se usa un respaldo automático.')
+        raise RuntimeError('DB_BACKEND debe ser mssql, postgres o sqlite. No se usa un respaldo automático.')
     server = setting('DB_SERVER')
     database = setting('DB_DATABASE', 'C1Tesoreria')
     if not server:
@@ -223,9 +238,12 @@ def get_engine():
         engine = create_engine(url, connect_args={'check_same_thread': False}, hide_parameters=True)
         @event.listens_for(engine, 'connect')
         def fk(dbapi, _): dbapi.execute('PRAGMA foreign_keys=ON')
-    else:
+    elif url.drivername.startswith('mssql'):
         engine = create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=5,
                                hide_parameters=True, deprecate_large_types=True, connect_args={'timeout': 10})
+    else:
+        engine = create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=5,
+                               hide_parameters=True)
     return engine
 
 def session(): return sessionmaker(get_engine(), expire_on_commit=False)()
@@ -244,7 +262,8 @@ def check_db():
     with get_engine().connect() as connection:
         connection.execute(text('SELECT 1')).scalar_one()
     return {'connected': True, 'backend': get_engine().dialect.name,
-            'label': 'SQL Server' if get_engine().dialect.name == 'mssql' else 'SQLite · prueba local, NO SQL Server'}
+            'label': {'mssql': 'SQL Server', 'postgresql': 'PostgreSQL',
+                      'sqlite': 'SQLite · prueba local, NO SQL Server'}.get(get_engine().dialect.name, 'Base de datos')}
 
 if __name__ == '__main__':
     import sys

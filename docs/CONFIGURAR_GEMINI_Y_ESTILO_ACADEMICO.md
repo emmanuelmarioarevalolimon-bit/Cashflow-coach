@@ -8,7 +8,7 @@ La aplicación llama a Gemini desde FastAPI, no desde el navegador. La clave per
 2. En el panel, entra a **Dashboard → Projects**. Selecciona un proyecto o usa **Import projects** para incorporar uno existente de Google Cloud.
 3. Entra a **API Keys** y crea una clave para ese proyecto. Usa una clave de autorización (**Auth key**), que es el tipo actual creado por AI Studio.
 4. Conserva la clave en un gestor de secretos. No la pegues en el navegador, en archivos JavaScript, en GitHub ni en una conversación.
-5. En la carpeta de C1 Tesorería ejecuta:
+5. En la carpeta de COMPRIA ejecuta:
 
    ```powershell
    python .\iniciar.py --configure

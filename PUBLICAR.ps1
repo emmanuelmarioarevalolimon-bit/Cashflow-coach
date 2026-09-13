@@ -35,7 +35,7 @@ function Get-GitIdentity {
 
 try {
     Write-Host ''
-    Write-Host 'CASHFLOW COACH - PUBLICAR ENTREGA 6.0.0-web-integrada'
+    Write-Host 'COMPRIA - PUBLICAR ENTREGA 6.0.0-web-integrada'
     Write-Host ('Destino: ' + $Repo)
     Write-Host 'No se usaran tus otras carpetas, .env, bases de datos ni mejoras nuevas.'
     Write-Host ''

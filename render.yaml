@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: compria
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: DB_BACKEND
+        value: postgres
+      - key: DATABASE_URL
+        fromDatabase:
+          name: compria-db
+          property: connectionString
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: ALLOW_REGISTRATION
+        value: "0"
+      - key: INITIAL_ADMIN_EMAIL
+        sync: false
+      - key: INITIAL_ADMIN_PASSWORD
+        sync: false
+      - key: INITIAL_ADMIN_COMPANY
+        value: COMPRIA
+      - key: INITIAL_ADMIN_CURRENCY
+        value: MXN
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: gemini-3.8-flash
+      - key: AI_TIMEOUT_SECONDS
+        value: "60"
+
+databases:
+  - name: compria-db
+    plan: 0.5c-1g
+    region: oregon
+    postgresMajorVersion: "18"

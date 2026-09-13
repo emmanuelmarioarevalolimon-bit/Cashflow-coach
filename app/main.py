@@ -15,7 +15,7 @@ from .models import AnalyzeRequest, AssistantRequest
 from .service import analyze, demo_payload
 from .version import VERSION
 from .db import init_db, setting, session, audit
-from .security import router as auth_router, get_actor
+from .security import router as auth_router, get_actor, bootstrap_initial_admin
 from .workspace import router as workspace_router
 from .predictions import router as predictions_router
 from .calendar_api import router as calendar_router
@@ -25,14 +25,14 @@ INSTANCE=uuid.uuid4().hex[:10]
 
 @asynccontextmanager
 async def lifespan(app):
-    if setting('C1_PUBLIC_MODE','0')=='1':
-        raise RuntimeError('Publicación bloqueada en este piloto: realiza revisión de seguridad, HTTPS y controles operativos antes de habilitar datos reales por internet.')
-    try: init_db()
+    try:
+        init_db()
+        bootstrap_initial_admin()
     except Exception as exc:
         raise RuntimeError('No se pudo inicializar SQL. Revisa instancia, permisos, ODBC y certificado. Ejecuta python -m app.db --init. No se usó otra base de datos.') from None
     yield
 
-app=FastAPI(title='C1 Tesorería — documentos e historial',version=VERSION,lifespan=lifespan,
+app=FastAPI(title='COMPRIA',version=VERSION,lifespan=lifespan,
     description='Piloto con SQL Server, identidad de aplicación, revisión documental y Gemini. No es una conexión bancaria.')
 app.mount('/static',StaticFiles(directory=STATIC_DIR),name='static')
 app.include_router(auth_router);app.include_router(workspace_router);app.include_router(predictions_router);app.include_router(calendar_router)

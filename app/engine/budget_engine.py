@@ -1,4 +1,4 @@
-"""Motor determinista de presupuesto y liquidez para el MVP C1 SuperPro.
+"""Motor determinista de presupuesto y liquidez para COMPRIA.
 
 Incluye:
 - proyeccion diaria de saldo;

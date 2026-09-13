@@ -1,4 +1,4 @@
--- C1 Tesorería v4 · esquema inicial (compilado por SQLAlchemy).
+-- COMPRIA v4 · esquema inicial (compilado por SQLAlchemy).
 -- NO ejecutado contra una instancia SQL Server durante la preparación.
 -- Ejecutar con administrador en una BASE NUEVA, antes del usuario de aplicación.
 USE [C1Tesoreria];

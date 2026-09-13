@@ -786,7 +786,7 @@ def _check_cli() -> int:
     if sys.argv[1:] != ['--check']:
         print('Uso: python -m app.ai_service --check')
         return 2
-    print(f'C1 Tesorería {VERSION}. Prueba real: hasta 4 llamadas incluyendo recuperación de conexión, consume cuota.')
+    print(f'COMPRIA {VERSION}. Prueba real: hasta 4 llamadas incluyendo recuperación de conexión, consume cuota.')
     try:
         result = check_connection()
     except AssistantFailure as exc:

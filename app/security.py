@@ -73,6 +73,28 @@ def identity(db,user):
     company=db.get(Company,user.company_id)
     return {'email':user.email,'company':company.name,'companyId':company.id,'currency':company.currency}
 
+def bootstrap_initial_admin() -> None:
+    """Create the owner account once when production secrets are supplied."""
+    email = setting('INITIAL_ADMIN_EMAIL').strip().lower()
+    password = setting('INITIAL_ADMIN_PASSWORD')
+    company_name = setting('INITIAL_ADMIN_COMPANY', 'COMPRIA').strip()
+    currency = setting('INITIAL_ADMIN_CURRENCY', 'MXN').strip().upper()
+    if not any((email, password)):
+        return
+    if not email or not password:
+        raise RuntimeError('INITIAL_ADMIN_EMAIL e INITIAL_ADMIN_PASSWORD deben configurarse juntos.')
+    if len(password) < 12 or not re.fullmatch(r'[^\s@]+@[^\s@]+\.[^\s@]+', email):
+        raise RuntimeError('Las credenciales del administrador inicial no son válidas.')
+    if not re.fullmatch(r'[A-Z]{3}', currency) or not 2 <= len(company_name) <= 160:
+        raise RuntimeError('La empresa o moneda del administrador inicial no son válidas.')
+    with session() as db:
+        if db.scalar(select(User.id).limit(1)):
+            return
+        company = Company(name=company_name, currency=currency)
+        db.add(company); db.flush()
+        db.add(User(company_id=company.id, email=email, password_hash=hash_password(password)))
+        db.commit()
+
 @router.post('/register')
 def register(payload: Registration, request: Request, response: Response):
     limited((request.client.host if request.client else '', 'auth'))
